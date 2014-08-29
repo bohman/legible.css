@@ -6,11 +6,15 @@
 
 
 /* Spacing and sizes */
+
+/*
 .legible {
   font-size: 16px;
   line-height: 1.3em;
 }
+*/
 
+/*
 .legible h1,
 .legible h2,
 .legible h3,
@@ -26,7 +30,9 @@
 .legible pre code {
   margin-top: 1em;
 }
+*/
 
+/*
 .legible h1 + *,
 .legible h2 + *,
 .legible h3 + *,
@@ -35,6 +41,41 @@
 .legible h6 + *,
 .legible *:first-child {
   margin-top: 0;
+}
+*/
+
+/* Headers */
+/*
+.legible h1,
+.legible h2,
+.legible h3,
+.legible h4,
+.legible h5,
+.legible h6 {
+  font-size: 2em;
+}
+*/
+
+/*
+.legible h2 {
+  font-size: 1.8em;
+}
+*/
+
+.legible h3 {
+  font-size: 1.6em;
+}
+
+.legible h4 {
+  font-size: 1.4em;
+}
+
+.legible h5 {
+  font-size: 1.2em;
+}
+
+.legible h6 {
+  font-size: 1em;
 }
 
 /* Lists */
@@ -53,43 +94,11 @@
 }
 
 .legible li {
-  margin-top: 0.3em;
+  /* margin-top: 0.3em; */
 }
 
 .legible li:first-child {
   margin-top: 0;
-}
-
-/* Headers */
-.legible h1,
-.legible h2,
-.legible h3,
-.legible h4,
-.legible h5,
-.legible h6 {
-  font-size: 2em;
-  /* margin-bottom: 0.3em;
-  line-height: 1em; */
-}
-
-.legible h2 {
-  font-size: 1.8em;
-}
-
-.legible h3 {
-  font-size: 1.6em;
-}
-
-.legible h4 {
-  font-size: 1.4em;
-}
-
-.legible h5 {
-  font-size: 1.2em;
-}
-
-.legible h6 {
-  font-size: 1em;
 }
 
 /* Quotes, bolds, italics and other emphasis */

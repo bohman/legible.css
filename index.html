@@ -43,6 +43,31 @@
     <h1>legible.css</h1>
     <p>This is it. Blah blah blah. Made by <a href="http://linusbohman.se">Linus Bohman</a> for <a href="http://040.se">040</a>. If you need a beautiful and well crafted website or webapp, give us a call. We're based in gorgeous Malmö, Sweden, but work globally.</p>
 
+    <p>This app came to be after realizing we'd like a quick way to play with and test different elements on a page. It is the result of many hours of experimenting and research. Have fun. Write more about philosophy.</p>
+
+    <h2>Sizes and spaces</h2>
+    <p>We start by setting some default values. <b>Font size</b> and <b>line height</b> will determine the size of the grid. <b>Block spacing</b> determines how many grid units should be between each block level element.</p>
+
+    <h2>Headers</h2>
+    <p>The math behind headers is tricky for people like me. Once we have a baseline grid like we do above, we need to figure out the size and the line-height of the different headers. In order to do that, we add two more options. One is  <b>scale</b>, which allows you to control how much bigger the headers should be relative to body type. The most <a href="http://viljamis.com/blog/2012/typography/">common typographic scale</a> tells us that type should be incremented in steps - often exponentially. That lets us set <b>times the size of font size</b> (which we'll shorten xfs).</p>
+
+    <blockquote>
+      <h3>Header 3</h3>
+      <h4>Header 4</h4>
+      <h5>Header 5</h5>
+      <h6>Header 6</h6>
+    </blockquote>
+
+    <p>The formula per header looks like this:</p>
+
+    <ul>
+      <li>$header-font-size = <code>scale<sup>xfs</sup> * font size</code></li>
+      <li>$header-number-of-lines = <code>$header-font-size / line height</code></li>
+      <li>$header-line-height = <code>line height * $header-number-of-lines</code></li>
+    </ul>
+
+    <p>Phew. There you go. You've seen header 1 and header 2 so far - here are the others.</p>
+
     <h2>Lists</h2>
     <p>This is an unordered list:</p>
 
@@ -109,26 +134,66 @@
       - Show HTML
     -->
     <div class="section">
-      <button class="show-css">Show css</button>
+      <button class="toggle-css">Toggle css</button>
+      <button class="toggle-grid">Toggle grid</button>
     </div>
 
     <div class="section">
       <h2 class="section-title">Sizes and spacing</h2>
 
       <div class="field-group">
-        <label>Font size <input id="font-size-input" type="number"></label>
+        <label>Font size <input id="font-size-input" type="number" min="8" max="54" step="1"></label>
         <input id="font-size-range" type="range" value="16" min="8" max="54" step="1">
       </div>
 
       <div class="field-group">
-        <label>Line height <input type="number" id="line-height-input"></label>
+        <label>Line height <input type="number" id="line-height-input" min="1" max="3" step="0.05"></label>
         <input id="line-height-range" type="range" value="1.5" min="1" max="3" step="0.05">
       </div>
 
       <div class="field-group">
-        <label>Block spacing <input type="number" id="block-spacing-input"></label>
+        <label>Block spacing <input type="number" id="block-spacing-input" min="1" max="4" step="1"></label>
         <input id="block-spacing-range" type="range" value="1" min="1" max="4" step="1">
       </div>
+    </div>
+
+    <!-- <div class="field-group">
+      font-family
+    </div> -->
+
+    <div class="section">
+      <h2 class="section-title">Headers</h2>
+
+      <div class="field-group">
+        <label>Scale <input type="number" id="h-scale-input" min="1" max="4" step="0.05"></label>
+        <input id="h-scale-range" type="range" value="2" min="1" max="4" step="0.05">
+      </div>
+
+      <!-- <div class="field-group">
+        font-family
+      </div> -->
+
+      <h3 class="section-sub-title">Header 1</h3>
+      <div class="field-group">
+         <label>Times font size</label>
+         <input type="number" id="h1-size" value="3">
+       </div>
+
+       <div class="field-group">
+          <label>Font weight</label>
+          <input type="number" id="h1-font-weight" value="700" min="100" max="900" step="100">
+        </div>
+
+        <h3 class="section-sub-title">Header 2</h3>
+        <div class="field-group">
+           <label>Times font size</label>
+           <input type="number" id="h2-size" value="2">
+         </div>
+
+         <div class="field-group">
+            <label>Font weight</label>
+            <input type="number" id="h2-font-weight" value="700" min="100" max="900" step="100">
+          </div>
     </div>
 
     <div class="section">

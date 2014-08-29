@@ -84,12 +84,15 @@
 
       });
     },
-    
 
     // Other interactions
-    toggle_css: function() {
-      $('.show-css').click(function(e){
+    buttons: function() {
+      $('.toggle-css').click(function(e){
         leg.fn.toggle_css();
+        e.preventDefault();
+      });
+      $('.toggle-grid').click(function(e){
+        leg.fn.toggle_grid();
         e.preventDefault();
       });
     }
@@ -101,9 +104,14 @@
   // 
   leg.fn = {
 
-    // Show css or demo
+    // Toggle css
     toggle_css: function() {
       $('html').toggleClass('showing-css');
+    },
+
+    // Toggle css
+    toggle_grid: function() {
+      $('html').toggleClass('showing-grid');
     },
 
     // Build CSS: grab values entered in controls,
@@ -117,27 +125,50 @@
       leg.ref.css.support_array = [];
       leg.ref.css.support = '';
 
-      // Spacing and sizing
+      // Base value reference
+      var font_size = parseFloat($('#font-size-range').val());
+      var line_height = parseFloat($('#line-height-range').val());
+      var line_height_px = Math.round(font_size * line_height);
+      var h_scale = parseFloat($('#h-scale-range').val());
+
+      var block_spacing = $('#block-spacing-range').val();
+      var block_spacing_px = block_spacing * line_height_px;
+
+      var h1_size = parseFloat($('#h1-size').val());
+      var h1_font_size = Math.round(Math.pow(h_scale, h1_size) * font_size);
+      var h1_number_of_lines = Math.ceil(h1_font_size / line_height_px);
+      var h1_line_height_px = line_height_px * h1_number_of_lines;
+      var h1_font_weight = parseFloat($('#h1-font-weight').val());
+
+      var h2_size = parseFloat($('#h2-size').val());
+      var h2_font_size = Math.round(Math.pow(h_scale, h2_size) * font_size);
+      var h2_number_of_lines = Math.ceil(h2_font_size / line_height_px);
+      var h2_line_height_px = h2_number_of_lines * line_height_px;
+      var h2_font_weight = parseFloat($('#h2-font-weight').val());
+
+      // Support css, help see things but shouldn't be added to legible
       leg.ref.css.support_array.push({
         selectors: ['.legible-test'],
         styles: {
-          background_size: '100%' + ' ' + parseFloat($('#line-height-range').val() * 2) + 'em',
-          padding: $('#line-height-range').val() + 'em 40px'
+          background_size: '100%' + ' ' + line_height_px * 2 + 'px',
+          padding: line_height + 'em 40px'
         }
       });
 
+      // Spacing and sizing
       leg.ref.css.legible_array.push({
+        comment: 'Sizes and spacing',
         selectors: ['.legible'],
         styles: {
-          font_size: $('#font-size-range').val() + 'px',
-          line_height: $('#line-height-range').val() + 'em'
+          font_size: font_size + 'px',
+          line_height: line_height_px + 'px'
         }
       });
 
       leg.ref.css.legible_array.push({
         selectors: ['.legible h1', '.legible h2', '.legible h3', '.legible h4', '.legible h5', '.legible h6', '.legible div', '.legible p', '.legible ul', '.legible ol', '.legible blockquote', '.legible table', '.legible pre code'],
         styles: {
-          margin_top: $('#block-spacing-range').val() + 'em'
+          margin_top: block_spacing_px + 'px'
         }
       });
 
@@ -145,6 +176,26 @@
         selectors: ['.legible h1 + *', '.legible h2 + *', '.legible h3 + *', '.legible h4 + *', '.legible h5 + *', '.legible h6 + *', '.legible *:first-child'],
         styles: {
           margin_top: '0'
+        }
+      });
+
+      // Headers
+      leg.ref.css.legible_array.push({
+        comment: 'Headers',
+        selectors: ['.legible h1'],
+        styles: {
+          font_size: h1_font_size + 'px',
+          line_height: h1_line_height_px + 'px',
+          font_weight: h1_font_weight
+        }
+      });
+
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible h2'],
+        styles: {
+          font_size: h2_font_size + 'px',
+          line_height: h2_line_height_px + 'px',
+          font_weight: h2_font_weight
         }
       });
 
@@ -169,6 +220,7 @@
       }
 
       // Populate css
+      console.log(leg.ref.css.legible);
       leg.ref.css.legible_formatted = leg.fn.format_css(leg.ref.css.legible);
       leg.ref.el.legible_css.text(leg.ref.css.legible_formatted);
       leg.ref.el.support_css.text(leg.ref.css.support);
@@ -177,6 +229,7 @@
     // Give this function a CSS object and it'll return a css string.
     // A CSS object look like this:
     // {
+    //   comment: '',
     //   selectors: [],
     //   styles: { attribute: 'value' }
     // }
@@ -188,6 +241,12 @@
         // Reference
         var selectors = css_object.selectors;
         var styles = css_object.styles;
+        var comment = css_object.comment;
+
+        // Comment
+        if(comment != undefined) {
+          css_string += '/*' + comment + '*/';
+        }
 
         // Selectors
         css_string += selectors.join(',');
@@ -229,6 +288,8 @@
 
       code = code
         .split('\t').join('    ')
+        .replace(/\/\*/g, '/* ')
+        .replace(/\*\//g, ' */\n')
         .replace(/\s*{\s*/g, ' {\n    ')
         .replace(/;\s*/g, ';\n    ')
         .replace(/,\s*/g, ',\n')

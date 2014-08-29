@@ -96,6 +96,7 @@ button {
   margin-top: 0;
 }
 
+.controls .section-sub-title,
 .controls .field-group {
   margin-top: 20px;
 }
@@ -107,7 +108,15 @@ button {
 .controls .section-title {
   font-weight: 800;
   text-transform: uppercase;
-  color: #222;
+  color: #000;
+  font-size: 24px;
+}
+
+.controls .section-sub-title {
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #000;
+  font-size: 18px;
 }
 
 
@@ -119,6 +128,7 @@ button {
 }
 
 .legible-css {
+  z-index: 10;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -143,9 +153,11 @@ html.showing-grid .legible-test {
     to bottom,
     transparent,
     transparent 50%,
-    hsla(200, 100%, 50%, .2) 50%,
-    hsla(200, 100%, 50%, .2)
+    rgba(0, 0, 0, .08) 50%,
+    rgba(0, 0, 0, .08)
   );
+}
 
-  /* background-size: 100% 1.8em */;
+html.showing-grid .legible-test > * {
+  outline: red 1px solid;
 }
