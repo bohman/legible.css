@@ -90,23 +90,35 @@
       leg.ref.css_array = [];
       leg.ref.css = '';
 
-      // Basic legible
-      var setup = {
+      // Spacing and sizing
+      leg.ref.css_array.push({
         selectors: ['.legible'],
         styles: {
           font_size: $('#font-size-range').val() + 'px',
           line_height: $('#line-height-range').val() + 'em'
         }
-      }
-      leg.ref.css_array.push(setup);
+      });
+
+      leg.ref.css_array.push({
+        selectors: ['.legible h1', '.legible h2', '.legible h3', '.legible h4', '.legible h5', '.legible h6', '.legible div', '.legible p', '.legible ul', '.legible ol', '.legible blockquote', '.legible table', '.legible pre code'],
+        styles: {
+          margin_top: $('#block-spacing-range').val() + 'em'
+        }
+      });
+
+      leg.ref.css_array.push({
+        selectors: ['.legible h1 + *', '.legible h2 + *', '.legible h3 + *', '.legible h4 + *', '.legible h5 + *', '.legible h6 + *', '.legible *:first-child'],
+        styles: {
+          margin_top: '0'
+        }
+      });
 
       // Format css string
       for (var i = 0; i < leg.ref.css_array.length; i++) {
 
-        // Easy reference
-        var css_object = leg.ref.css_array[i];
-        var selectors = css_object.selectors;
-        var styles = css_object.styles;
+        // Reference
+        var selectors = leg.ref.css_array[i].selectors;
+        var styles = leg.ref.css_array[i].styles;
 
         // Spacing if needed
         if(i > 0) {
@@ -114,7 +126,7 @@
         }
 
         // Selectors
-        leg.ref.css += selectors.join('\n');
+        leg.ref.css += selectors.join(',\n');
 
         // Starting bracket
         leg.ref.css += ' {';

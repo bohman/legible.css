@@ -4,12 +4,13 @@
   containing the wysiwyg output.
 */
 
+
+/* Spacing and sizes */
 .legible {
   font-size: 16px;
   line-height: 1.3em;
 }
 
-/* Spacing between elements */
 .legible h1,
 .legible h2,
 .legible h3,
@@ -21,46 +22,18 @@
 .legible ul,
 .legible ol,
 .legible blockquote,
+.legible table,
 .legible pre code {
   margin-top: 1em;
 }
 
-.legible h1 + p,
-.legible h2 + p,
-.legible h3 + p,
-.legible h4 + p,
-.legible h5 + p,
-.legible h6 + p,
-.legible h1 + div,
-.legible h2 + div,
-.legible h3 + div,
-.legible h4 + div,
-.legible h5 + div,
-.legible h6 + div,
-.legible h1 + ul,
-.legible h2 + ul,
-.legible h3 + ul,
-.legible h4 + ul,
-.legible h5 + ul,
-.legible h6 + ul,
-.legible h1 + ol,
-.legible h2 + ol,
-.legible h3 + ol,
-.legible h4 + ol,
-.legible h5 + ol,
-.legible h6 + ol,
-.legible h1:first-child,
-.legible h2:first-child,
-.legible h3:first-child,
-.legible h4:first-child,
-.legible h5:first-child,
-.legible h6:first-child,
-.legible div:first-child,
-.legible p:first-child,
-.legible ul:first-child,
-.legible ol:first-child,
-.legible blockquote:first-child,
-.legible pre:first-child code{
+.legible h1 + *,
+.legible h2 + *,
+.legible h3 + *,
+.legible h4 + *,
+.legible h5 + *,
+.legible h6 + *,
+.legible *:first-child {
   margin-top: 0;
 }
 
@@ -76,7 +49,7 @@
 }
 
 .legible ul {
-  list-style: circle;
+  list-style: disc;
 }
 
 .legible li {

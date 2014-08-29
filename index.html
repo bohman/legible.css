@@ -90,11 +90,23 @@
     <!--
       Controls
     -->
-    <label>Font size <input id="font-size-input" type="number"></label>
-    <input id="font-size-range" type="range" value="16" min="8" max="54" step="1">
-    
-    <label for="base-size">Line height <input type="text" id="line-height-input"></label>
-    <input id="line-height-range" type="range" value="1.5" min="1" max="3" step="0.005">
+    <div class="section">
+      <h2 class="section-title">Sizes and spacing</h2>
+      <div class="field-group">
+        <label>Font size <input id="font-size-input" type="number"></label>
+        <input id="font-size-range" type="range" value="16" min="8" max="54" step="1">
+      </div>
+
+      <div class="field-group">
+        <label>Line height <input type="number" id="line-height-input"></label>
+        <input id="line-height-range" type="range" value="1.5" min="1" max="3" step="0.05">
+      </div>
+
+      <div class="field-group">
+        <label>Block spacing <input type="number" id="block-spacing-input"></label>
+        <input id="block-spacing-range" type="range" value="1.5" min="1" max="3" step="0.05">
+      </div>
+    </div>
   </form>
 
 
