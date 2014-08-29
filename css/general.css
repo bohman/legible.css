@@ -92,6 +92,10 @@ button {
   margin-top: 40px;
 }
 
+.controls .section:first-child {
+  margin-top: 0;
+}
+
 .controls .field-group {
   margin-top: 20px;
 }
@@ -132,4 +136,16 @@ button {
 
 html.showing-css .legible-css {
   display: block;
+}
+
+html.showing-grid .legible-test {
+  background-image: linear-gradient(
+    to bottom,
+    transparent,
+    transparent 50%,
+    hsla(200, 100%, 50%, .2) 50%,
+    hsla(200, 100%, 50%, .2)
+  );
+
+  /* background-size: 100% 1.8em */;
 }

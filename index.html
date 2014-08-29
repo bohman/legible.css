@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js showing-grid">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -34,12 +34,35 @@
 </head>
 <body>
 
-
-  <style class="legible-css" contenteditable>
-  </style>
+  <style class="support-css"></style>
+  <style class="legible-css" contenteditable></style>
 
 
   <div class="legible legible-test">
+
+    <h1>legible.css</h1>
+    <p>This is it. Blah blah blah. Made by <a href="http://linusbohman.se">Linus Bohman</a> for <a href="http://040.se">040</a>. If you need a beautiful and well crafted website or webapp, give us a call. We're based in gorgeous Malmö, Sweden, but work globally.</p>
+
+    <h2>Lists</h2>
+    <p>This is an unordered list:</p>
+
+    <ul>
+      <li>One</li>
+      <li>Two</li>
+      <li>A slightly longer list item, to check spacing between list items and line heights. You may or may not want a difference depending on what kind of look you're creating.</li>
+      <li>Four</li>
+    </ul>
+
+    <p>This is an ordered list:</p>
+
+    <ol>
+      <li>One</li>
+      <li>Two</li>
+      <li>A slightly longer list item, to check spacing between list items and line heights. You may or may not want a difference depending on what kind of look you're creating.</li>
+      <li>Four</li>
+    </ol>
+
+    <h2>Old test case - here for legacy but will be replaced soon enough</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Nullam gravida venenatis consequat</strong>. <em>In hac habitasse platea dictumst</em>. <span style="text-decoration: line-through;">Etiam pharetra, purus quis malesuada blandit,</span> <a href="http://040.se">ligula nisi ornare nibh</a>, <span style="text-decoration: underline;">condimentum fermentum</span> quam metus vitae quam. <code><b class="hello">inline code test</b></code> Nulla ultrices, tortor sit amet scelerisque lobortis, neque arcu ornare sapien, et pellentesque tortor enim quis libero. Maecenas dapibus faucibus arcu, eu fringilla libero rutrum quis. Donec feugiat, arcu id commodo ornare, justo odio hendrerit libero, id venenatis nibh quam eget est. Aliquam in molestie metus. Integer venenatis commodo euismod. In hac habitasse platea dictumst. Sed et nisl quis lorem cursus rutrum. Nunc porttitor condimentum lorem sed hendrerit. Etiam semper quam vel sapien porta imperdiet a vitae nisi. In ut suscipit magna. Mauris eget felis dolor, non sodales magna.</p>
     <ul>
     	<li>ett</li>
@@ -80,18 +103,18 @@
 
   <form class="controls">
     <!--
-      States:
+      States to have in finished version:
       - Demo
       - Show CSS
       - Show HTML
     -->
-    <button class="show-css">Show css</button>
+    <div class="section">
+      <button class="show-css">Show css</button>
+    </div>
 
-    <!--
-      Controls
-    -->
     <div class="section">
       <h2 class="section-title">Sizes and spacing</h2>
+
       <div class="field-group">
         <label>Font size <input id="font-size-input" type="number"></label>
         <input id="font-size-range" type="range" value="16" min="8" max="54" step="1">
@@ -104,9 +127,24 @@
 
       <div class="field-group">
         <label>Block spacing <input type="number" id="block-spacing-input"></label>
-        <input id="block-spacing-range" type="range" value="1.5" min="1" max="3" step="0.05">
+        <input id="block-spacing-range" type="range" value="1" min="1" max="4" step="1">
       </div>
     </div>
+
+    <div class="section">
+      <h2 class="section-title">Lists</h2>
+
+     <div class="field-group">
+        <label>Left margin <input type="number" id="list-margin-input"></label>
+        <input id="list-margin-range" type="range" value="30" min="0" max="40" step="1">
+      </div>
+
+      <div class="field-group">
+        <label>Left padding <input type="number" id="list-padding-input"></label>
+        <input id="list-padding-range" type="range" value="10" min="0" max="20" step="1">
+      </div>
+    </div>
+
   </form>
 
 
