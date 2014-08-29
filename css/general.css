@@ -1,0 +1,91 @@
+/* BASICS ---------------- */
+body {
+  background-color: #fff;
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+}
+
+a {
+  color: #252525;
+  text-decoration: none;
+}
+
+a:focus,
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus {
+  outline-color: rgb(0, 0, 0);
+  outline-color: rgba(0, 0, 0, 0.6);
+}
+
+label {
+  display: block;
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+  
+}
+
+input[type="submit"],
+button {
+  
+}
+
+[disabled] {
+  opacity: 0.7;
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::selection {
+  background: #b3d4fc;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+
+/* Controls */
+.controls  {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 300px;
+  padding: 20px;
+  background: #222;
+  color: #fff;
+  overflow-y: scroll;
+}
+
+/* Legible test */
+.legible-test,
+.legible-css {
+  padding: 40px;
+  margin-right: 300px;
+}
+
+.legible-css {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  white-space: pre;
+  background: #fff;
+  color: #000;
+  display: none;
+  overflow: auto;
+  font-size: 16px;
+  line-height: 1.4em;
+  font-family: Monaco, monospace;
+}
+
+html.showing-css .legible-css {
+  display: block;
+}
