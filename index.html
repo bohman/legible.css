@@ -10,6 +10,7 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
 
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
   <link rel='stylesheet' href='css/base-improvements.css' type='text/css' media='all' />
   <link rel='stylesheet' href='css/general.css' type='text/css' media='all' />
   <link rel='stylesheet' href='css/legible.css' type='text/css' media='all' />
@@ -38,91 +39,92 @@
   <style class="legible-css" contenteditable></style>
 
 
-  <div class="legible legible-test">
+  <div class="legible-test">
+    <div class="wrapper legible">
+      <h1>legible.css</h1>
+      <p>This is it. Blah blah blah. Made by <a href="http://linusbohman.se">Linus Bohman</a> for <a href="http://040.se">040</a>. If you need a beautiful and well crafted website or webapp, give us a call. We're based in gorgeous Malmö, Sweden, but work globally.</p>
 
-    <h1>legible.css</h1>
-    <p>This is it. Blah blah blah. Made by <a href="http://linusbohman.se">Linus Bohman</a> for <a href="http://040.se">040</a>. If you need a beautiful and well crafted website or webapp, give us a call. We're based in gorgeous Malmö, Sweden, but work globally.</p>
+      <p>This app came to be after realizing we'd like a quick way to play with and test different elements on a page. It is the result of many hours of experimenting and research. Have fun. Write more about philosophy.</p>
 
-    <p>This app came to be after realizing we'd like a quick way to play with and test different elements on a page. It is the result of many hours of experimenting and research. Have fun. Write more about philosophy.</p>
+      <h2>Sizes and spaces</h2>
+      <p>We start by setting some default values. <b>Font size</b> and <b>line height</b> will determine the size of the grid. <b>Block spacing</b> determines how many grid units should be between each block level element.</p>
 
-    <h2>Sizes and spaces</h2>
-    <p>We start by setting some default values. <b>Font size</b> and <b>line height</b> will determine the size of the grid. <b>Block spacing</b> determines how many grid units should be between each block level element.</p>
+      <h2>Headers</h2>
+      <p>The math behind headers is tricky for mathtarded people like me. Once we have a baseline grid with values above, we need to calculate size and line-height of the different headers. In order to do that, we add two more options. One is  <b>scale</b>, which allows you to control how much bigger the headers should be relative to body type. The most <a href="http://viljamis.com/blog/2012/typography/">common typographic scale</a> tells us that type should be incremented in steps - often exponentially. That lets us set <b>font size multiplier</b> (which we'll shorten xfs).</p>
 
-    <h2>Headers</h2>
-    <p>The math behind headers is tricky for people like me. Once we have a baseline grid like we do above, we need to figure out the size and the line-height of the different headers. In order to do that, we add two more options. One is  <b>scale</b>, which allows you to control how much bigger the headers should be relative to body type. The most <a href="http://viljamis.com/blog/2012/typography/">common typographic scale</a> tells us that type should be incremented in steps - often exponentially. That lets us set <b>times the size of font size</b> (which we'll shorten xfs).</p>
+      <p>The formula per header looks like this:</p>
 
-    <blockquote>
-      <h3>Header 3</h3>
-      <h4>Header 4</h4>
-      <h5>Header 5</h5>
-      <h6>Header 6</h6>
-    </blockquote>
+      <ul>
+        <li>$header-font-size = <code>scale<sup>xfs</sup> * font size</code></li>
+        <li>$header-number-of-lines = <code>$header-font-size / line height</code></li>
+        <li>$header-line-height = <code>line height * $header-number-of-lines</code></li>
+      </ul>
 
-    <p>The formula per header looks like this:</p>
+      <p>Phew. There you go. You've seen header 1 and header 2 so far - here are the others.</p>
 
-    <ul>
-      <li>$header-font-size = <code>scale<sup>xfs</sup> * font size</code></li>
-      <li>$header-number-of-lines = <code>$header-font-size / line height</code></li>
-      <li>$header-line-height = <code>line height * $header-number-of-lines</code></li>
-    </ul>
+      <div>
+        <h3>Header 3</h3>
+        <h4>Header 4</h4>
+        <h5>Header 5</h5>
+        <h6>Header 6</h6>
+      </div>
 
-    <p>Phew. There you go. You've seen header 1 and header 2 so far - here are the others.</p>
+      <h2>Lists</h2>
+      <p>This is an unordered list:</p>
 
-    <h2>Lists</h2>
-    <p>This is an unordered list:</p>
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>A slightly longer list item, to check spacing between list items and line heights. You may or may not want a difference depending on what kind of look you're creating.</li>
+        <li>Four</li>
+      </ul>
 
-    <ul>
-      <li>One</li>
-      <li>Two</li>
-      <li>A slightly longer list item, to check spacing between list items and line heights. You may or may not want a difference depending on what kind of look you're creating.</li>
-      <li>Four</li>
-    </ul>
+      <p>This is an ordered list:</p>
 
-    <p>This is an ordered list:</p>
+      <ol>
+        <li>One</li>
+        <li>Two</li>
+        <li>A slightly longer list item, to check spacing between list items and line heights. You may or may not want a difference depending on what kind of look you're creating.</li>
+        <li>Four</li>
+      </ol>
 
-    <ol>
-      <li>One</li>
-      <li>Two</li>
-      <li>A slightly longer list item, to check spacing between list items and line heights. You may or may not want a difference depending on what kind of look you're creating.</li>
-      <li>Four</li>
-    </ol>
+      <h2>Old test case - here for legacy but will be replaced soon enough</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Nullam gravida venenatis consequat</strong>. <em>In hac habitasse platea dictumst</em>. <span style="text-decoration: line-through;">Etiam pharetra, purus quis malesuada blandit,</span> <a href="http://040.se">ligula nisi ornare nibh</a>, <span style="text-decoration: underline;">condimentum fermentum</span> quam metus vitae quam. <code><b class="hello">inline code test</b></code> Nulla ultrices, tortor sit amet scelerisque lobortis, neque arcu ornare sapien, et pellentesque tortor enim quis libero. Maecenas dapibus faucibus arcu, eu fringilla libero rutrum quis. Donec feugiat, arcu id commodo ornare, justo odio hendrerit libero, id venenatis nibh quam eget est. Aliquam in molestie metus. Integer venenatis commodo euismod. In hac habitasse platea dictumst. Sed et nisl quis lorem cursus rutrum. Nunc porttitor condimentum lorem sed hendrerit. Etiam semper quam vel sapien porta imperdiet a vitae nisi. In ut suscipit magna. Mauris eget felis dolor, non sodales magna.</p>
+      <ul>
+      	<li>ett</li>
+      	<li>två</li>
+      	<li>tre</li>
+      </ul>
+      <p>Maecenas odio quam, scelerisque vitae blandit non, ornare consectetur lorem. In sit amet elementum sem. Curabitur vitae sem non sem pellentesque ullamcorper. Integer ipsum ligula, venenatis eget fermentum ac, rutrum in justo. Nullam a lacus neque. Praesent consectetur nulla ut tortor gravida a blandit arcu blandit. Etiam sed nunc ac leo vulputate condimentum id scelerisque elit. Nam eu tellus purus, a ornare velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean laoreet placerat magna, ac consectetur odio lobortis at. Morbi pharetra risus id erat aliquet vestibulum. Sed orci erat, vulputate et gravida id, vulputate quis mauris. Nam sapien est, ornare vitae ornare ultrices, dictum eu magna. Cras nec mauris nec nisi hendrerit mattis.</p>
+      <ol>
+      	<li>ett</li>
+      	<li>två</li>
+      	<li>tre</li>
+      </ol>
+      <p>Vestibulum nec cursus nibh. Duis luctus vestibulum velit, sed scelerisque felis bibendum id. Ut scelerisque fringilla nisl at tincidunt. Mauris vestibulum dolor sed lectus egestas interdum. Donec nisi nibh, lacinia porta facilisis ac, porttitor sed orci. Vestibulum quis adipiscing erat. Aliquam dignissim ante vel magna malesuada eu malesuada justo pulvinar. Curabitur eu augue ante, sit amet volutpat magna. Phasellus at sem non orci iaculis vehicula. Aliquam erat volutpat. Cras ultrices elit eget purus sagittis tempus. Suspendisse tempus metus at dui tincidunt vestibulum. Phasellus cursus, orci et volutpat ultricies, felis ante hendrerit velit, eget lacinia nunc mi a libero. Proin sagittis varius purus, a adipiscing enim faucibus quis.</p>
+      <blockquote>Blockquote. Duis nec auctor massa. Sed fermentum, dui adipiscing aliquam dignissim, libero ligula ultrices erat, ac malesuada odio felis vel justo. Vestibulum lobortis eleifend est, ultrices gravida lorem tempus in. Sed in metus turpis. Donec et mi augue, accumsan auctor quam. Duis vestibulum pulvinar pulvinar. Aenean gravida rutrum mauris, non aliquet nisi cursus et. Curabitur sit amet suscipit nunc.</blockquote>
+      <p style="text-align: left;">Vänsterställd. Vestibulum a enim neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non quam auctor purus egestas pretium. Praesent semper, diam ac pretium ullamcorper, sem ante laoreet turpis, sed malesuada arcu nisi eget nunc. Ut ornare varius lacus vitae ullamcorper. Nullam placerat, mi sit amet bibendum auctor, neque lacus semper est, ac posuere turpis mi eget lacus. Aenean iaculis euismod lacus lacinia lacinia. Curabitur egestas, nulla id iaculis suscipit, augue lacus vulputate ipsum, vitae facilisis dolor turpis ut velit. Aliquam pellentesque lectus id lorem porta adipiscing. Pellentesque feugiat ullamcorper pharetra. Suspendisse dapibus pellentesque venenatis.</p>
+      <p style="text-align: center;">Centrerad. Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem at congue vestibulum, nulla justo accumsan metus, convallis lobortis orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla. Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales condimentum faucibus</p>
+      <p style="text-align: right;">Högerställd. Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
+      <p style="text-align: justify;">Justerad. Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
 
-    <h2>Old test case - here for legacy but will be replaced soon enough</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Nullam gravida venenatis consequat</strong>. <em>In hac habitasse platea dictumst</em>. <span style="text-decoration: line-through;">Etiam pharetra, purus quis malesuada blandit,</span> <a href="http://040.se">ligula nisi ornare nibh</a>, <span style="text-decoration: underline;">condimentum fermentum</span> quam metus vitae quam. <code><b class="hello">inline code test</b></code> Nulla ultrices, tortor sit amet scelerisque lobortis, neque arcu ornare sapien, et pellentesque tortor enim quis libero. Maecenas dapibus faucibus arcu, eu fringilla libero rutrum quis. Donec feugiat, arcu id commodo ornare, justo odio hendrerit libero, id venenatis nibh quam eget est. Aliquam in molestie metus. Integer venenatis commodo euismod. In hac habitasse platea dictumst. Sed et nisl quis lorem cursus rutrum. Nunc porttitor condimentum lorem sed hendrerit. Etiam semper quam vel sapien porta imperdiet a vitae nisi. In ut suscipit magna. Mauris eget felis dolor, non sodales magna.</p>
-    <ul>
-    	<li>ett</li>
-    	<li>två</li>
-    	<li>tre</li>
-    </ul>
-    <p>Maecenas odio quam, scelerisque vitae blandit non, ornare consectetur lorem. In sit amet elementum sem. Curabitur vitae sem non sem pellentesque ullamcorper. Integer ipsum ligula, venenatis eget fermentum ac, rutrum in justo. Nullam a lacus neque. Praesent consectetur nulla ut tortor gravida a blandit arcu blandit. Etiam sed nunc ac leo vulputate condimentum id scelerisque elit. Nam eu tellus purus, a ornare velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean laoreet placerat magna, ac consectetur odio lobortis at. Morbi pharetra risus id erat aliquet vestibulum. Sed orci erat, vulputate et gravida id, vulputate quis mauris. Nam sapien est, ornare vitae ornare ultrices, dictum eu magna. Cras nec mauris nec nisi hendrerit mattis.</p>
-    <ol>
-    	<li>ett</li>
-    	<li>två</li>
-    	<li>tre</li>
-    </ol>
-    <p>Vestibulum nec cursus nibh. Duis luctus vestibulum velit, sed scelerisque felis bibendum id. Ut scelerisque fringilla nisl at tincidunt. Mauris vestibulum dolor sed lectus egestas interdum. Donec nisi nibh, lacinia porta facilisis ac, porttitor sed orci. Vestibulum quis adipiscing erat. Aliquam dignissim ante vel magna malesuada eu malesuada justo pulvinar. Curabitur eu augue ante, sit amet volutpat magna. Phasellus at sem non orci iaculis vehicula. Aliquam erat volutpat. Cras ultrices elit eget purus sagittis tempus. Suspendisse tempus metus at dui tincidunt vestibulum. Phasellus cursus, orci et volutpat ultricies, felis ante hendrerit velit, eget lacinia nunc mi a libero. Proin sagittis varius purus, a adipiscing enim faucibus quis.</p>
-    <blockquote>Blockquote. Duis nec auctor massa. Sed fermentum, dui adipiscing aliquam dignissim, libero ligula ultrices erat, ac malesuada odio felis vel justo. Vestibulum lobortis eleifend est, ultrices gravida lorem tempus in. Sed in metus turpis. Donec et mi augue, accumsan auctor quam. Duis vestibulum pulvinar pulvinar. Aenean gravida rutrum mauris, non aliquet nisi cursus et. Curabitur sit amet suscipit nunc.</blockquote>
-    <p style="text-align: left;">Vänsterställd. Vestibulum a enim neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non quam auctor purus egestas pretium. Praesent semper, diam ac pretium ullamcorper, sem ante laoreet turpis, sed malesuada arcu nisi eget nunc. Ut ornare varius lacus vitae ullamcorper. Nullam placerat, mi sit amet bibendum auctor, neque lacus semper est, ac posuere turpis mi eget lacus. Aenean iaculis euismod lacus lacinia lacinia. Curabitur egestas, nulla id iaculis suscipit, augue lacus vulputate ipsum, vitae facilisis dolor turpis ut velit. Aliquam pellentesque lectus id lorem porta adipiscing. Pellentesque feugiat ullamcorper pharetra. Suspendisse dapibus pellentesque venenatis.</p>
-    <p style="text-align: center;">Centrerad. Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem at congue vestibulum, nulla justo accumsan metus, convallis lobortis orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla. Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales condimentum faucibus</p>
-    <p style="text-align: right;">Högerställd. Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
-    <p style="text-align: justify;">Justerad. Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
+      <pre><code>.code-block-test {
+        display: hellz-yeah;
+      }</code></pre>
 
-    <pre><code>.code-block-test {
-      display: hellz-yeah;
-    }</code></pre>
-
-    <h1>Heading 1</h1>
-    <p>Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
-    <h2>Heading 2</h2>
-    <p>Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
-    <h3>Heading 3</h3>
-    <p>Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
-    <h4>Heading 4</h4>
-    <p>Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
-    <h5>Heading 5</h5>
-    <p>Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
-    <h6>Heading 6</h6>
-    <p>Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
+      <h1>Heading 1</h1>
+      <p>Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
+      <h2>Heading 2</h2>
+      <p>Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
+      <h3>Heading 3</h3>
+      <p>Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
+      <h4>Heading 4</h4>
+      <p>Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
+      <h5>Heading 5</h5>
+      <p>Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
+      <h6>Heading 6</h6>
+      <p>Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
+    </div>
   </div>
 
 
@@ -166,7 +168,7 @@
 
       <div class="field-group">
         <label>Scale <input type="number" id="h-scale-input" min="1" max="4" step="0.05"></label>
-        <input id="h-scale-range" type="range" value="2" min="1" max="4" step="0.05">
+        <input id="h-scale-range" type="range" value="1.5" min="1" max="4" step="0.05">
       </div>
 
       <!-- <div class="field-group">
@@ -175,38 +177,85 @@
 
       <h3 class="section-sub-title">Header 1</h3>
       <div class="field-group">
-         <label>Times font size</label>
-         <input type="number" id="h1-size" value="3">
-       </div>
+        <label>Font size multiplier</label>
+        <input type="number" id="h1-size" value="3">
+      </div>
 
-       <div class="field-group">
-          <label>Font weight</label>
-          <input type="number" id="h1-font-weight" value="700" min="100" max="900" step="100">
-        </div>
+      <div class="field-group">
+        <label>Font weight</label>
+        <input type="number" id="h1-font-weight" value="700" min="100" max="900" step="100">
+      </div>
 
-        <h3 class="section-sub-title">Header 2</h3>
-        <div class="field-group">
-           <label>Times font size</label>
-           <input type="number" id="h2-size" value="2">
-         </div>
+      <h3 class="section-sub-title">Header 2</h3>
+      <div class="field-group">
+        <label>Font size multiplier</label>
+        <input type="number" id="h2-size" value="2">
+      </div>
 
-         <div class="field-group">
-            <label>Font weight</label>
-            <input type="number" id="h2-font-weight" value="700" min="100" max="900" step="100">
-          </div>
+      <div class="field-group">
+        <label>Font weight</label>
+        <input type="number" id="h2-font-weight" value="700" min="100" max="900" step="100">
+      </div>
+
+      <h3 class="section-sub-title">Header 3</h3>
+      <div class="field-group">
+        <label>Font size multiplier</label>
+        <input type="number" id="h3-size" value="1">
+      </div>
+
+      <div class="field-group">
+        <label>Font weight</label>
+        <input type="number" id="h3-font-weight" value="700" min="100" max="900" step="100">
+      </div>
+
+      <h3 class="section-sub-title">Header 4 - Header 6</h3>
+      <div class="field-group">
+        <label>Header 4 font weight</label>
+        <input type="number" id="h4-font-weight" value="700" min="100" max="900" step="100">
+      </div>
+
     </div>
 
     <div class="section">
       <h2 class="section-title">Lists</h2>
 
-     <div class="field-group">
-        <label>Left margin <input type="number" id="list-margin-input"></label>
-        <input id="list-margin-range" type="range" value="30" min="0" max="40" step="1">
+      <div class="field-group">
+        <label>Bullet position</label>
+        <select id="list-style-position">
+          <option value="outside" selected="selected">Outside</option>
+          <option value="inside">Inside</option>
+        </select>
       </div>
 
       <div class="field-group">
-        <label>Left padding <input type="number" id="list-padding-input"></label>
-        <input id="list-padding-range" type="range" value="10" min="0" max="20" step="1">
+        <label>Indentation <input type="number" id="list-margin-left-input" value="1.5" min="0" max="5" step="0.05"></label>
+        <input id="list-margin-left-range" type="range" value="1.5" min="0" max="5" step="0.05">
+      </div>
+
+      <div class="field-group">
+        <label>UL bullet type</label>
+        <select id="list-ul-bullet-type">
+          <option value="disc" selected="selected">Disc</option>
+          <option value="circle">Circle</option>
+          <option value="square">Square</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>OL bullet type</label>
+        <select id="list-ol-bullet-type">
+          <option value="decimal" selected="selected">Decimal</option>
+          <option value="decimal-leading-zero">Decimal with leading zero</option>
+          <option value="lower-roman">Lower roman</option>
+          <option value="upper-roman">Upper roman</option>
+          <option value="lower-greek">Lower greek</option>
+          <option value="lower-latin">Lower latin</option>
+          <option value="upper-latin">Upper latin</option>
+          <option value="armenian">Armenian</option>
+          <option value="georgian">Georgian</option>
+          <option value="lower-alpha">Lower alpha</option>
+          <option value="upper-alpha">Upper alpha</option>
+        </select>
       </div>
     </div>
 

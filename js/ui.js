@@ -41,7 +41,7 @@
       leg.fn.build_css();
 
       // On change
-      leg.ref.el.controls.find('input').change(function(){
+      leg.ref.el.controls.find('input, select').change(function(){
         leg.fn.build_css();
         leg.fn.hash_update();
       });
@@ -146,11 +146,31 @@
       var h2_line_height_px = h2_number_of_lines * line_height_px;
       var h2_font_weight = parseFloat($('#h2-font-weight').val());
 
+      var h3_size = parseFloat($('#h3-size').val());
+      var h3_font_size = Math.round(Math.pow(h_scale, h3_size) * font_size);
+      var h3_number_of_lines = Math.ceil(h3_font_size / line_height_px);
+      var h3_line_height_px = h3_number_of_lines * line_height_px;
+      var h3_font_weight = parseFloat($('#h3-font-weight').val());
+
+      var h4_font_weight = parseFloat($('#h4-font-weight').val());
+
+      var list_style_position = $('#list-style-position').val();
+      var list_margin_left = $('#list-margin-left-range').val();
+      var list_margin_left_px = Math.round(list_margin_left * font_size);
+      var list_ul_bullet_type = $('#list-ul-bullet-type').val();
+      var list_ol_bullet_type = $('#list-ol-bullet-type').val();
+
       // Support css, help see things but shouldn't be added to legible
       leg.ref.css.support_array.push({
         selectors: ['.legible-test'],
         styles: {
-          background_size: '100%' + ' ' + line_height_px * 2 + 'px',
+          background_size: '100%' + ' ' + line_height_px * 2 + 'px'
+        }
+      });
+
+      leg.ref.css.support_array.push({
+        selectors: ['.legible-test .wrapper'],
+        styles: {
           padding: line_height + 'em 40px'
         }
       });
@@ -199,12 +219,43 @@
         }
       });
 
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible h3'],
+        styles: {
+          font_size: h3_font_size + 'px',
+          line_height: h3_line_height_px + 'px',
+          font_weight: h3_font_weight
+        }
+      });
+
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible h4'],
+        styles: {
+          font_weight: h4_font_weight
+        }
+      });
+
       // Lists
       leg.ref.css.legible_array.push({
         selectors: ['.legible ul', '.legible ol'],
         styles: {
-          margin_left: $('#list-margin-range').val() + 'px',
-          padding_left: $('#list-padding-range').val() + 'px'
+          list_style_position: list_style_position,
+          margin_left: list_margin_left_px + 'px',
+          padding_left: '0'
+        }
+      });
+
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible ul'],
+        styles: {
+          list_style_type: list_ul_bullet_type
+        }
+      });
+
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible ol'],
+        styles: {
+          list_style_type: list_ol_bullet_type
         }
       });
 
@@ -220,7 +271,6 @@
       }
 
       // Populate css
-      console.log(leg.ref.css.legible);
       leg.ref.css.legible_formatted = leg.fn.format_css(leg.ref.css.legible);
       leg.ref.el.legible_css.text(leg.ref.css.legible_formatted);
       leg.ref.el.support_css.text(leg.ref.css.support);
@@ -309,7 +359,7 @@
     // Update hash
     hash_update: function() {
       var hash_array = [];
-      leg.ref.el.controls.find('.field-group > input').each(function(index){
+      leg.ref.el.controls.find('.field-group > input, .field-group > select').each(function(index){
         var value = $(this).val();
         hash_array.push(value);
       });
@@ -322,7 +372,7 @@
       var hash = window.location.hash.replace('#', '');
       if(hash.length > 1) {
         var hash_array = hash.split('_');
-        leg.ref.el.controls.find('.field-group > input').each(function(index){
+        leg.ref.el.controls.find('.field-group > input, .field-group > select').each(function(index){
           $(this).val(hash_array[index]);
         });
       }

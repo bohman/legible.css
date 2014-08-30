@@ -62,29 +62,40 @@
 }
 */
 
+/* 
 .legible h3 {
   font-size: 1.6em;
 }
+*/
 
+/* 
 .legible h4 {
   font-size: 1.4em;
 }
+*/
 
+/* 
 .legible h5 {
   font-size: 1.2em;
 }
+*/
 
+/* 
 .legible h6 {
   font-size: 1em;
 }
+*/
 
 /* Lists */
+/*
 .legible ul,
 .legible ol {
   margin-left: 30px;
   padding-left: 10px;
 }
+*/
 
+/*
 .legible ol {
   list-style: decimal;
 }
@@ -92,14 +103,7 @@
 .legible ul {
   list-style: disc;
 }
-
-.legible li {
-  /* margin-top: 0.3em; */
-}
-
-.legible li:first-child {
-  margin-top: 0;
-}
+*/
 
 /* Quotes, bolds, italics and other emphasis */
 .legible b,
@@ -113,7 +117,7 @@
 }
 
 .legible blockquote {
-  margin: 2em 3em;
+  /* margin: 2em 3em; */
   font-size: 0.9em;
   color: #777;
 }
@@ -121,6 +125,7 @@
 .legible code {
   font-family: Courier, 'Courier New', monospace;
   background: #efefef;
+  vertical-align: bottom;
 }
 
 .legible pre code {
