@@ -46,10 +46,20 @@
 
       <p>This app came to be after realizing we'd like a quick way to play with and test different elements on a page. It is the result of many hours of experimenting and research. Have fun. Write more about philosophy.</p>
 
-      <h2>Sizes and spaces</h2>
+      <h2>How to use</h2>
+      <p>Click CSS-button. Copy/paste. Add .legible to parent element. Done! We do make a few assumptions, though:</p>
+
+      <ul>
+        <li>Reset and improvements (link to github, probably works anyway but is untested)</li>
+      </ul>
+
+      <h2>Maths and explanations (yikes)</h2>
+
+      <p>Story?</p>
+
+      <h3>Grids and maths</h3>
       <p>We start by setting some default values. <b>Font size</b> and <b>line height</b> will determine the size of the grid. <b>Block spacing</b> determines how many grid units should be between each block level element.</p>
 
-      <h2>Headers</h2>
       <p>The math behind headers is tricky for mathtarded people like me. Once we have a baseline grid with values above, we need to calculate size and line-height of the different headers. In order to do that, we add two more options. One is  <b>scale</b>, which allows you to control how much bigger the headers should be relative to body type. The most <a href="http://viljamis.com/blog/2012/typography/">common typographic scale</a> tells us that type should be incremented in steps - often exponentially. That lets us set <b>font size multiplier</b> (which we'll shorten xfs).</p>
 
       <p>The formula per header looks like this:</p>
@@ -60,17 +70,9 @@
         <li>$header-line-height = <code>line height * $header-number-of-lines</code></li>
       </ul>
 
-      <p>Phew. There you go. You've seen header 1 and header 2 so far - here are the others.</p>
+      <h3>Styling lists</h3>
 
-      <div>
-        <h3>Header 3</h3>
-        <h4>Header 4</h4>
-        <h5>Header 5</h5>
-        <h6>Header 6</h6>
-      </div>
-
-      <h2>Lists</h2>
-      <p>This is an unordered list:</p>
+      <p>Not a whole lot to it. This is an unordered list:</p>
 
       <ul>
         <li>One</li>
@@ -102,7 +104,7 @@
       	<li>tre</li>
       </ol>
       <p>Vestibulum nec cursus nibh. Duis luctus vestibulum velit, sed scelerisque felis bibendum id. Ut scelerisque fringilla nisl at tincidunt. Mauris vestibulum dolor sed lectus egestas interdum. Donec nisi nibh, lacinia porta facilisis ac, porttitor sed orci. Vestibulum quis adipiscing erat. Aliquam dignissim ante vel magna malesuada eu malesuada justo pulvinar. Curabitur eu augue ante, sit amet volutpat magna. Phasellus at sem non orci iaculis vehicula. Aliquam erat volutpat. Cras ultrices elit eget purus sagittis tempus. Suspendisse tempus metus at dui tincidunt vestibulum. Phasellus cursus, orci et volutpat ultricies, felis ante hendrerit velit, eget lacinia nunc mi a libero. Proin sagittis varius purus, a adipiscing enim faucibus quis.</p>
-      <blockquote>Blockquote. Duis nec auctor massa. Sed fermentum, dui adipiscing aliquam dignissim, libero ligula ultrices erat, ac malesuada odio felis vel justo. Vestibulum lobortis eleifend est, ultrices gravida lorem tempus in. Sed in metus turpis. Donec et mi augue, accumsan auctor quam. Duis vestibulum pulvinar pulvinar. Aenean gravida rutrum mauris, non aliquet nisi cursus et. Curabitur sit amet suscipit nunc.</blockquote>
+      <blockquote>Blockquote. Duis nec auctor massa. Sed fermentum, dui adipiscing aliquam dignissim, libero ligula ultrices erat, ac malesuada odio felis vel justo.</blockquote>
       <p style="text-align: left;">Vänsterställd. Vestibulum a enim neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non quam auctor purus egestas pretium. Praesent semper, diam ac pretium ullamcorper, sem ante laoreet turpis, sed malesuada arcu nisi eget nunc. Ut ornare varius lacus vitae ullamcorper. Nullam placerat, mi sit amet bibendum auctor, neque lacus semper est, ac posuere turpis mi eget lacus. Aenean iaculis euismod lacus lacinia lacinia. Curabitur egestas, nulla id iaculis suscipit, augue lacus vulputate ipsum, vitae facilisis dolor turpis ut velit. Aliquam pellentesque lectus id lorem porta adipiscing. Pellentesque feugiat ullamcorper pharetra. Suspendisse dapibus pellentesque venenatis.</p>
       <p style="text-align: center;">Centrerad. Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem at congue vestibulum, nulla justo accumsan metus, convallis lobortis orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla. Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales condimentum faucibus</p>
       <p style="text-align: right;">Högerställd. Integer non diam ligula, iaculis volutpat nunc. Curabitur sagittis, sem  at congue vestibulum, nulla justo accumsan metus, convallis lobortis  orci velit sit amet est. Phasellus eu consectetur augue. Vestibulum  volutpat magna et tortor bibendum non sagittis justo vulputate. Maecenas  scelerisque nisl ac magna pretium eu lobortis magna commodo. Quisque  mollis, enim sed congue vehicula, nisi leo facilisis massa, non egestas  nibh ligula ac augue. Cras quis euismod ante. Nulla ac elit nulla.  Phasellus viverra nunc a nunc semper ornare. Vestibulum sodales  condimentum faucibus.</p>
@@ -150,7 +152,7 @@
 
       <div class="field-group">
         <label>Line height <input type="number" id="line-height-input" min="1" max="3" step="0.05"></label>
-        <input id="line-height-range" type="range" value="1.5" min="1" max="3" step="0.05">
+        <input id="line-height-range" type="range" value="1.8" min="1" max="3" step="0.05">
       </div>
 
       <div class="field-group">
@@ -169,6 +171,15 @@
       <div class="field-group">
         <label>Scale <input type="number" id="h-scale-input" min="1" max="4" step="0.05"></label>
         <input id="h-scale-range" type="range" value="1.5" min="1" max="4" step="0.05">
+      </div>
+
+      <div class="field-group">
+        <label>Space after</label>
+        <select id="h-block-spacing">
+          <option value="0" selected="selected">None</option>
+          <option value="0.5">Half block spacing</option>
+          <option value="1">Same as block spacing</option>
+        </select>
       </div>
 
       <!-- <div class="field-group">
@@ -257,6 +268,70 @@
           <option value="upper-alpha">Upper alpha</option>
         </select>
       </div>
+    </div>
+
+
+    <div class="section">
+      <h2 class="section-title">Blockquotes</h2>
+
+      <div class="field-group">
+        <label>Font size multiplier</label>
+        <input type="number" id="blockquote-size" value="2">
+      </div>
+
+      <div class="field-group">
+        <label>Font weight</label>
+        <input type="number" id="blockquote-font-weight" value="700" min="100" max="900" step="100">
+      </div>
+
+      <div class="field-group">
+        <label>Font style</label>
+        <select id="blockquote-font-style">
+          <option value="normal">Normal</option>
+          <option value="italic" selected="selected">Italic</option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label>Background color</label>
+        <input type="text" id="blockquote-background-color" value="transparent">
+      </div>
+
+      <div class="field-group">
+        <label>Text color</label>
+        <input type="text" id="blockquote-color" value="inherit">
+      </div>
+
+      <div class="field-group">
+        <label>Indentation <input type="number" id="blockquote-margin-left-input" value="1.5" min="0" max="5" step="0.05"></label>
+        <input id="blockquote-margin-left-range" type="range" value="1.5" min="0" max="5" step="0.05">
+      </div>
+
+      <div class="field-group">
+        <label>Padding <input type="number" id="blockquote-padding-input" min="1" max="4" step="1"></label>
+        <input id="blockquote-padding-range" type="range" value="0" min="0" max="4" step="1">
+      </div>
+
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Other</h2>
+
+      <div class="field-group">
+        <label>Bold weight</label>
+        <input type="number" id="b-font-weight" value="700" min="100" max="900" step="100">
+      </div>
+
+      <div class="field-group">
+        <label>Code background color</label>
+        <input type="text" id="code-background-color" value="#222">
+      </div>
+
+      <div class="field-group">
+        <label>Code text color</label>
+        <input type="text" id="code-color" value="#fff">
+      </div>
+
     </div>
 
   </form>

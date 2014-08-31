@@ -165,8 +165,8 @@ html.showing-grid .legible-test {
     to bottom,
     transparent,
     transparent 50%,
-    rgba(0, 0, 0, .08) 50%,
-    rgba(0, 0, 0, .08)
+    #f1f1f5 50%,
+    #f1f1f5
   );
 }
 

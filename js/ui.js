@@ -82,6 +82,12 @@
           range.val(val);
         });
 
+        // On change on text
+        input.change(function(e){
+          var val = $(this).val();
+          range.val(val);
+          range.trigger('change');
+        });
       });
     },
 
@@ -129,10 +135,14 @@
       var font_size = parseFloat($('#font-size-range').val());
       var line_height = parseFloat($('#line-height-range').val());
       var line_height_px = Math.round(font_size * line_height);
+
       var h_scale = parseFloat($('#h-scale-range').val());
+      var h_block_spacing = parseFloat($('#h-block-spacing').val());
 
       var block_spacing = $('#block-spacing-range').val();
+      var block_spacing_after_header = Math.floor(block_spacing * h_block_spacing);
       var block_spacing_px = block_spacing * line_height_px;
+      var block_spacing_after_header_px = block_spacing_after_header * line_height_px;
 
       var h1_size = parseFloat($('#h1-size').val());
       var h1_font_size = Math.round(Math.pow(h_scale, h1_size) * font_size);
@@ -160,6 +170,23 @@
       var list_ul_bullet_type = $('#list-ul-bullet-type').val();
       var list_ol_bullet_type = $('#list-ol-bullet-type').val();
 
+      var blockquote_size = parseFloat($('#blockquote-size').val());
+      var blockquote_font_size = Math.round(Math.pow(h_scale, blockquote_size) * font_size);
+      var blockquote_number_of_lines = Math.ceil(blockquote_font_size / line_height_px);
+      var blockquote_line_height_px = blockquote_number_of_lines * line_height_px;
+      var blockquote_font_weight = $('#blockquote-font-weight').val();
+      var blockquote_font_style = $('#blockquote-font-style').val();
+      var blockquote_background_color = $('#blockquote-background-color').val();
+      var blockquote_color = $('#blockquote-color').val();
+      var blockquote_margin_left = $('#blockquote-margin-left-range').val();
+      var blockquote_margin_left_px = Math.round(blockquote_margin_left * font_size);
+      var blockquote_padding = $('#blockquote-padding-range').val();
+      var blockquote_padding_px = blockquote_padding * line_height_px;
+
+      var b_font_weight = $('#b-font-weight').val();
+      var code_background_color = $('#code-background-color').val();
+      var code_color = $('#code-color').val();
+
       // Support css, help see things but shouldn't be added to legible
       leg.ref.css.support_array.push({
         selectors: ['.legible-test'],
@@ -186,16 +213,23 @@
       });
 
       leg.ref.css.legible_array.push({
-        selectors: ['.legible h1', '.legible h2', '.legible h3', '.legible h4', '.legible h5', '.legible h6', '.legible div', '.legible p', '.legible ul', '.legible ol', '.legible blockquote', '.legible table', '.legible pre code'],
+        selectors: ['.legible h1', '.legible h2', '.legible h3', '.legible h4', '.legible h5', '.legible h6', '.legible div', '.legible p', '.legible ul', '.legible ol', '.legible blockquote', '.legible table', '.legible pre code:first-child'],
         styles: {
           margin_top: block_spacing_px + 'px'
         }
       });
 
       leg.ref.css.legible_array.push({
-        selectors: ['.legible h1 + *', '.legible h2 + *', '.legible h3 + *', '.legible h4 + *', '.legible h5 + *', '.legible h6 + *', '.legible *:first-child'],
+        selectors: ['.legible *:first-child'],
         styles: {
           margin_top: '0'
+        }
+      });
+
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible h1 + *', '.legible h2 + *', '.legible h3 + *', '.legible h4 + *', '.legible h5 + *', '.legible h6 + *'],
+        styles: {
+          margin_top: block_spacing_after_header_px + 'px'
         }
       });
 
@@ -237,6 +271,7 @@
 
       // Lists
       leg.ref.css.legible_array.push({
+        comment: 'Lists',
         selectors: ['.legible ul', '.legible ol'],
         styles: {
           list_style_position: list_style_position,
@@ -258,6 +293,54 @@
           list_style_type: list_ol_bullet_type
         }
       });
+
+      // Quotes/bolds/italics and other emphasis
+      leg.ref.css.legible_array.push({
+        comment: 'Quotes/bolds/italics and other emphasis',
+        selectors: ['.legible b', '.legible strong'],
+        styles: {
+          font_weight: b_font_weight
+        }
+      });
+
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible i', '.legible em'],
+        styles: {
+          font_style: 'italic'
+        }
+      });
+
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible code'],
+        styles: {
+          vertical_align: 'bottom',
+          font_family: "'Monaco', Courier, 'Courier New', monospace",
+          background_color: code_background_color,
+          color: code_color
+        }
+      });
+
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible pre code'],
+        styles: {
+          display: 'block'
+        }
+      });
+
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible blockquote'],
+        styles: {
+          font_size: blockquote_font_size + 'px',
+          line_height: blockquote_line_height_px + 'px',
+          font_weight: blockquote_font_weight,
+          font_style: blockquote_font_style,
+          margin_left: blockquote_margin_left_px + 'px',
+          padding: blockquote_padding_px + 'px',
+          color: blockquote_color,
+          background_color: blockquote_background_color
+        }
+      });
+
 
       // Build css strings
       for (var i = 0; i < leg.ref.css.legible_array.length; i++) {
@@ -320,7 +403,7 @@
 
     // Take ugly CSS string and make it look pretty.
     // Based on code from: https://raw.githubusercontent.com/mrcoles/cssunminifier/master/lib/cssunminifier.js but modified to suit 040 CSS style
-    format_css: function(code, tab) {
+    format_css: function(css, tab) {
       var defaultTab = 2;
       var space = '';
 
@@ -336,7 +419,7 @@
         tab = defaultTab;
       }
 
-      code = code
+      css = css
         .split('\t').join('    ')
         .replace(/\/\*/g, '/* ')
         .replace(/\*\//g, ' */\n')
@@ -350,17 +433,17 @@
 
       if (tab != 4) {
         for (;tab != 0;tab--) { space += ' '; }
-        code = code.replace(/\n    /g, '\n'+space);
+        css = css.replace(/\n    /g, '\n'+space);
       }
 
-      return code;
+      return css;
     },
 
     // Update hash
     hash_update: function() {
       var hash_array = [];
       leg.ref.el.controls.find('.field-group > input, .field-group > select').each(function(index){
-        var value = $(this).val();
+        var value = $(this).val().replace('#', '-');
         hash_array.push(value);
       });
       var hash = hash_array.join('_');
@@ -373,7 +456,7 @@
       if(hash.length > 1) {
         var hash_array = hash.split('_');
         leg.ref.el.controls.find('.field-group > input, .field-group > select').each(function(index){
-          $(this).val(hash_array[index]);
+          $(this).val(hash_array[index].replace('-', '#'));
         });
       }
     }
