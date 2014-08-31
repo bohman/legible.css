@@ -13,7 +13,6 @@
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
   <link rel='stylesheet' href='css/base-improvements.css' type='text/css' media='all' />
   <link rel='stylesheet' href='css/general.css' type='text/css' media='all' />
-  <link rel='stylesheet' href='css/legible.css' type='text/css' media='all' />
 
   <link rel="shortcut icon" href="/img/favicons/favicon.ico">
   <link rel="apple-touch-icon" sizes="57x57" href="/img/favicons/apple-touch-icon-57x57.png">
@@ -53,42 +52,32 @@
         <li>Reset and improvements (link to github, probably works anyway but is untested)</li>
       </ul>
 
-      <h2>Maths and explanations (yikes)</h2>
+      <h2>An in-depth look at what we're doing</h2>
 
-      <p>Story?</p>
-
-      <h3>Grids and maths</h3>
-      <p>We start by setting some default values. <b>Font size</b> and <b>line height</b> will determine the size of the grid. <b>Block spacing</b> determines how many grid units should be between each block level element.</p>
-
-      <p>The math behind headers is tricky for mathtarded people like me. Once we have a baseline grid with values above, we need to calculate size and line-height of the different headers. In order to do that, we add two more options. One is  <b>scale</b>, which allows you to control how much bigger the headers should be relative to body type. The most <a href="http://viljamis.com/blog/2012/typography/">common typographic scale</a> tells us that type should be incremented in steps - often exponentially. That lets us set <b>font size multiplier</b> (which we'll shorten xfs).</p>
-
-      <p>The formula per header looks like this:</p>
+      <p>I love typography, but at the same I'm, well, mathematically challenged. You might even call me mathtarded. So how do you know how to calculate different font sizes? After some research, we start by setting some default values.</p>
 
       <ul>
-        <li>$header-font-size = <code>scale<sup>xfs</sup> * font size</code></li>
-        <li>$header-number-of-lines = <code>$header-font-size / line height</code></li>
-        <li>$header-line-height = <code>line height * $header-number-of-lines</code></li>
+        <li><b>Font size</b> is the size of the main body type.</li>
+        <li><b>Line height</b> is the height of the lines the type rests on.</li>
+        <li>These two items are the basis of the rest of our calculations - they determine the size of our typographic grid.</li>
       </ul>
 
-      <h3>Styling lists</h3>
-
-      <p>Not a whole lot to it. This is an unordered list:</p>
+      <p>Now we can calculate other sizes we might want to have. Thus, we introduce two more options.</p>
 
       <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>A slightly longer list item, to check spacing between list items and line heights. You may or may not want a difference depending on what kind of look you're creating.</li>
-        <li>Four</li>
+        <li>One is <b>scale</b>, which allows you to control how much we want to increment the different items. This is a universal measurement used whenever we need to recalculate sizes.</li>
+        <li>The other is <b>font size multiplier</b> (which we'll shorten xfs). It is used to determine how much more/less we should increment the size.</li>
       </ul>
 
-      <p>This is an ordered list:</p>
+      <p>The formula for each element font size and line height looks like this:</p>
 
-      <ol>
-        <li>One</li>
-        <li>Two</li>
-        <li>A slightly longer list item, to check spacing between list items and line heights. You may or may not want a difference depending on what kind of look you're creating.</li>
-        <li>Four</li>
-      </ol>
+      <ul>
+        <li>$element-font-size = <code>scale<sup>xfs</sup> * font size</code></li>
+        <li>$element-number-of-lines = <code>$element-font-size / line height</code></li>
+        <li>$element-line-height = <code>line height * $element-number-of-lines</code></li>
+      </ul>
+
+      <p>Similar calculations are used when we determine indents and padding, but other than that we're free to go bananas with other styling. These calculations hold true for all (well crafted) fonts. Neat, right?</p>
 
       <h2>Old test case - here for legacy but will be replaced soon enough</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Nullam gravida venenatis consequat</strong>. <em>In hac habitasse platea dictumst</em>. <span style="text-decoration: line-through;">Etiam pharetra, purus quis malesuada blandit,</span> <a href="http://040.se">ligula nisi ornare nibh</a>, <span style="text-decoration: underline;">condimentum fermentum</span> quam metus vitae quam. <code><b class="hello">inline code test</b></code> Nulla ultrices, tortor sit amet scelerisque lobortis, neque arcu ornare sapien, et pellentesque tortor enim quis libero. Maecenas dapibus faucibus arcu, eu fringilla libero rutrum quis. Donec feugiat, arcu id commodo ornare, justo odio hendrerit libero, id venenatis nibh quam eget est. Aliquam in molestie metus. Integer venenatis commodo euismod. In hac habitasse platea dictumst. Sed et nisl quis lorem cursus rutrum. Nunc porttitor condimentum lorem sed hendrerit. Etiam semper quam vel sapien porta imperdiet a vitae nisi. In ut suscipit magna. Mauris eget felis dolor, non sodales magna.</p>

@@ -269,6 +269,21 @@
         }
       });
 
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible h5'],
+        styles: {
+          font_weight: h4_font_weight,
+          font_style: 'italic'
+        }
+      });
+
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible h6'],
+        styles: {
+          font_style: 'italic'
+        }
+      });
+
       // Lists
       leg.ref.css.legible_array.push({
         comment: 'Lists',

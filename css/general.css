@@ -5,7 +5,7 @@ body {
 }
 
 a {
-  color: #252525;
+  color: rgb(255, 71, 14);
   text-decoration: none;
 }
 
@@ -100,7 +100,6 @@ button {
   margin-top: 0;
 }
 
-.controls .section-sub-title,
 .controls .field-group {
   margin-top: 20px;
 }
@@ -122,6 +121,7 @@ button {
   text-transform: uppercase;
   color: #fff;
   font-size: 18px;
+  margin-top: 40px;
 }
 
 
@@ -171,6 +171,6 @@ html.showing-grid .legible-test {
 }
 
 html.showing-grid .legible-test .wrapper > * {
-  background-color: rgba(255, 71, 14, .2);
-  outline: rgba(255, 71, 14, .7) 1px solid;
+  background-color: rgba(0, 0, 0, .1);
+  outline: rgba(0, 0, 0, .5) 1px solid;
 }
