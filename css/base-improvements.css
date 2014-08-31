@@ -307,6 +307,20 @@ img {
   vertical-align: top;
 }
 
+/* Media shouldn't break the layout */
+.legible img,
+.legible video,
+.legible param,
+.legible object,
+.legible embed,
+.legible iframe {
+  max-width: 100%;
+}
+
+.legible img {
+  height: auto; /* If the image width is resized, having this will ensure the height is resized in all browsers */
+}
+
 /*
    Setting box model to something easier to work with. Works in IE8 and above - if your site must work
    in IE7 and below you should remove this for better consistency.
