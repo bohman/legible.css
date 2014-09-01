@@ -54,7 +54,7 @@
 
       <h2>An in-depth look at what we're doing</h2>
 
-      <p>I love typography, but at the same I'm, well, mathematically challenged. You might even call me mathtarded. So how do you know how to calculate different font sizes? After some research, we start by setting some default values.</p>
+      <p>I love typography, but I'm also mathematically challenged. You might even call me mathtarded. So how do you calculate different font sizes so they still relate well between each other and align to a grid? After some research, we start by setting some default values.</p>
 
       <ul>
         <li><b>Font size</b> is the size of the main body type.</li>
@@ -148,6 +148,11 @@
         <label>Block spacing <input type="number" id="block-spacing-input" min="1" max="4" step="1"></label>
         <input id="block-spacing-range" type="range" value="1" min="1" max="4" step="1">
       </div>
+
+      <div class="field-group">
+        <label>Scale <input type="number" id="h-scale-input" min="1" max="4" step="0.05"></label>
+        <input id="h-scale-range" type="range" value="1.5" min="1" max="4" step="0.05">
+      </div>
     </div>
 
     <!-- <div class="field-group">
@@ -156,11 +161,6 @@
 
     <div class="section">
       <h2 class="section-title">Headers</h2>
-
-      <div class="field-group">
-        <label>Scale <input type="number" id="h-scale-input" min="1" max="4" step="0.05"></label>
-        <input id="h-scale-range" type="range" value="1.5" min="1" max="4" step="0.05">
-      </div>
 
       <div class="field-group">
         <label>Space after</label>
