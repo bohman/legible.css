@@ -132,56 +132,74 @@
       leg.ref.css.support = '';
 
       // Base value reference
-      var font_size = parseFloat($('#font-size-range').val());
-      var line_height = parseFloat($('#line-height-range').val());
-      var line_height_px = Math.round(font_size * line_height);
+      var font_size_px = parseFloat($('#font-size-range').val());
+      var line_height_em = parseFloat($('#line-height-range').val());
+      var line_height_px = Math.round(font_size_px * line_height_em);
 
       var h_scale = parseFloat($('#h-scale-range').val());
       var h_block_spacing = parseFloat($('#h-block-spacing').val());
 
       var block_spacing = $('#block-spacing-range').val();
-      var block_spacing_after_header = Math.floor(block_spacing * h_block_spacing);
       var block_spacing_px = block_spacing * line_height_px;
-      var block_spacing_after_header_px = block_spacing_after_header * line_height_px;
+      var block_spacing_em = parseFloat(block_spacing_px/font_size_px).toFixed(4);
+      var block_spacing_after_header_em = h_block_spacing * block_spacing_em;
 
       var h1_size = parseFloat($('#h1-size').val());
-      var h1_font_size = Math.round(Math.pow(h_scale, h1_size) * font_size);
-      var h1_number_of_lines = Math.ceil(h1_font_size / line_height_px);
-      var h1_line_height_px = line_height_px * h1_number_of_lines;
       var h1_font_weight = parseFloat($('#h1-font-weight').val());
+      var h1_font_size_px = Math.round(Math.pow(h_scale, h1_size) * font_size_px);
+      var h1_number_of_lines = Math.ceil(h1_font_size_px / line_height_px);
+      var h1_line_height_px = line_height_px * h1_number_of_lines;
+      var h1_font_size_em = parseFloat(h1_font_size_px/font_size_px).toFixed(4);
+      var h1_line_height_em = parseFloat(h1_line_height_px/h1_font_size_px).toFixed(4);
+      var h1_one_line_em = line_height_px / h1_font_size_px;
+      var h1_margin_top = parseFloat(h1_one_line_em * block_spacing).toFixed(4);
 
       var h2_size = parseFloat($('#h2-size').val());
-      var h2_font_size = Math.round(Math.pow(h_scale, h2_size) * font_size);
-      var h2_number_of_lines = Math.ceil(h2_font_size / line_height_px);
-      var h2_line_height_px = h2_number_of_lines * line_height_px;
       var h2_font_weight = parseFloat($('#h2-font-weight').val());
+      var h2_font_size_px = Math.round(Math.pow(h_scale, h2_size) * font_size_px);
+      var h2_number_of_lines = Math.ceil(h2_font_size_px / line_height_px);
+      var h2_line_height_px = line_height_px * h2_number_of_lines;
+      var h2_font_size_em = parseFloat(h2_font_size_px/font_size_px).toFixed(4);
+      var h2_line_height_em = parseFloat(h2_line_height_px/h2_font_size_px).toFixed(4);
+      var h2_one_line_em = line_height_px / h2_font_size_px;
+      var h2_margin_top = parseFloat(h2_one_line_em * block_spacing).toFixed(4);
 
       var h3_size = parseFloat($('#h3-size').val());
-      var h3_font_size = Math.round(Math.pow(h_scale, h3_size) * font_size);
-      var h3_number_of_lines = Math.ceil(h3_font_size / line_height_px);
-      var h3_line_height_px = h3_number_of_lines * line_height_px;
       var h3_font_weight = parseFloat($('#h3-font-weight').val());
+      var h3_font_size_px = Math.round(Math.pow(h_scale, h3_size) * font_size_px);
+      var h3_number_of_lines = Math.ceil(h3_font_size_px / line_height_px);
+      var h3_line_height_px = line_height_px * h3_number_of_lines;
+      var h3_font_size_em = parseFloat(h3_font_size_px/font_size_px).toFixed(4);
+      var h3_line_height_em = parseFloat(h3_line_height_px/h3_font_size_px).toFixed(4);
+      var h3_one_line_em = line_height_px / h3_font_size_px;
+      var h3_margin_top = parseFloat(h3_one_line_em * block_spacing).toFixed(4);
 
       var h4_font_weight = parseFloat($('#h4-font-weight').val());
 
       var list_style_position = $('#list-style-position').val();
-      var list_margin_left = $('#list-margin-left-range').val();
-      var list_margin_left_px = Math.round(list_margin_left * font_size);
+      var list_margin_left_em = $('#list-margin-left-range').val();
+      var list_margin_left_px = Math.round(list_margin_left_em * font_size_px);
       var list_ul_bullet_type = $('#list-ul-bullet-type').val();
       var list_ol_bullet_type = $('#list-ol-bullet-type').val();
 
       var blockquote_size = parseFloat($('#blockquote-size').val());
-      var blockquote_font_size = Math.round(Math.pow(h_scale, blockquote_size) * font_size);
-      var blockquote_number_of_lines = Math.ceil(blockquote_font_size / line_height_px);
+      var blockquote_font_size_px = Math.round(Math.pow(h_scale, blockquote_size) * font_size_px);
+      var blockquote_number_of_lines = Math.ceil(blockquote_font_size_px / line_height_px);
       var blockquote_line_height_px = blockquote_number_of_lines * line_height_px;
+      
+      var blockquote_font_size_em = parseFloat(blockquote_font_size_px/font_size_px).toFixed(4);
+      var blockquote_line_height_em = parseFloat(blockquote_line_height_px/blockquote_font_size_px).toFixed(4);
+      var blockquote_one_line_em = line_height_px / blockquote_font_size_px;
+      var blockquote_margin_top = parseFloat(blockquote_one_line_em * block_spacing).toFixed(4);
       var blockquote_font_weight = $('#blockquote-font-weight').val();
       var blockquote_font_style = $('#blockquote-font-style').val();
       var blockquote_background_color = $('#blockquote-background-color').val();
       var blockquote_color = $('#blockquote-color').val();
-      var blockquote_margin_left = $('#blockquote-margin-left-range').val();
-      var blockquote_margin_left_px = Math.round(blockquote_margin_left * font_size);
+      var blockquote_margin_left_em = $('#blockquote-margin-left-range').val();
+      
       var blockquote_padding = $('#blockquote-padding-range').val();
-      var blockquote_padding_px = blockquote_padding * line_height_px;
+      
+      var blockquote_padding_em = blockquote_one_line_em * blockquote_padding;
 
       var b_font_weight = $('#b-font-weight').val();
       var code_background_color = $('#code-background-color').val();
@@ -191,14 +209,15 @@
       leg.ref.css.support_array.push({
         selectors: ['.legible-test'],
         styles: {
-          background_size: '100%' + ' ' + line_height_px * 2 + 'px'
+          font_size: font_size_px + 'px',
+          background_size: '100%' + ' ' + line_height_em * 2 + 'em'
         }
       });
 
       leg.ref.css.support_array.push({
         selectors: ['.legible-test .wrapper'],
         styles: {
-          padding: line_height + 'em 40px'
+          padding: line_height_em + 'em 40px'
         }
       });
 
@@ -207,15 +226,15 @@
         comment: 'Sizes and spacing',
         selectors: ['.legible'],
         styles: {
-          font_size: font_size + 'px',
-          line_height: line_height_px + 'px'
+          font_size: font_size_px + 'px',
+          line_height: line_height_em + 'em'
         }
       });
 
       leg.ref.css.legible_array.push({
         selectors: ['.legible h1', '.legible h2', '.legible h3', '.legible h4', '.legible h5', '.legible h6', '.legible div', '.legible p', '.legible ul', '.legible ol', '.legible blockquote', '.legible table', '.legible pre code:first-child'],
         styles: {
-          margin_top: block_spacing_px + 'px'
+          margin_top: block_spacing_em + 'em'
         }
       });
 
@@ -229,7 +248,7 @@
       leg.ref.css.legible_array.push({
         selectors: ['.legible h1 + *', '.legible h2 + *', '.legible h3 + *', '.legible h4 + *', '.legible h5 + *', '.legible h6 + *'],
         styles: {
-          margin_top: block_spacing_after_header_px + 'px'
+          margin_top: block_spacing_after_header_em + 'em'
         }
       });
 
@@ -238,27 +257,30 @@
         comment: 'Headers',
         selectors: ['.legible h1'],
         styles: {
-          font_size: h1_font_size + 'px',
-          line_height: h1_line_height_px + 'px',
-          font_weight: h1_font_weight
+          font_size: h1_font_size_em + 'em',
+          line_height: h1_line_height_em + 'em',
+          font_weight: h1_font_weight,
+          margin_top: h1_margin_top + 'em'
         }
       });
 
       leg.ref.css.legible_array.push({
         selectors: ['.legible h2'],
         styles: {
-          font_size: h2_font_size + 'px',
-          line_height: h2_line_height_px + 'px',
-          font_weight: h2_font_weight
+          font_size: h2_font_size_em + 'em',
+          line_height: h2_line_height_em + 'em',
+          font_weight: h2_font_weight,
+          margin_top: h2_margin_top + 'em'
         }
       });
 
       leg.ref.css.legible_array.push({
         selectors: ['.legible h3'],
         styles: {
-          font_size: h3_font_size + 'px',
-          line_height: h3_line_height_px + 'px',
-          font_weight: h3_font_weight
+          font_size: h3_font_size_em + 'em',
+          line_height: h3_line_height_em + 'em',
+          font_weight: h3_font_weight,
+          margin_top: h3_margin_top + 'em'
         }
       });
 
@@ -290,7 +312,7 @@
         selectors: ['.legible ul', '.legible ol'],
         styles: {
           list_style_position: list_style_position,
-          margin_left: list_margin_left_px + 'px',
+          margin_left: list_margin_left_em + 'em',
           padding_left: '0'
         }
       });
@@ -345,12 +367,13 @@
       leg.ref.css.legible_array.push({
         selectors: ['.legible blockquote'],
         styles: {
-          font_size: blockquote_font_size + 'px',
-          line_height: blockquote_line_height_px + 'px',
+          font_size: blockquote_font_size_em + 'em',
+          line_height: blockquote_line_height_em + 'em',
+          margin_top: blockquote_margin_top + 'em',
           font_weight: blockquote_font_weight,
           font_style: blockquote_font_style,
-          margin_left: blockquote_margin_left_px + 'px',
-          padding: blockquote_padding_px + 'px',
+          margin_left: blockquote_margin_left_em + 'em',
+          padding: blockquote_padding_em + 'em',
           color: blockquote_color,
           background_color: blockquote_background_color
         }
