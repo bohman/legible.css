@@ -66,7 +66,7 @@
         var input_id = range.attr('id').replace('-range', '-input');
         var input = $('#' + input_id);
 
-        // When loading
+        // On init
         var val = range.val();
         input.val(val);
 
