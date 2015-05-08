@@ -1,0 +1,125 @@
+/* This is what we want the output to look like. */
+
+
+/* Sizes and spacing */
+.legible {
+  font-size: 16px;
+  line-height: 1.8125em;
+}
+
+.legible h1,
+.legible h2,
+.legible h3,
+.legible h4,
+.legible h5,
+.legible h6,
+.legible div,
+.legible p,
+.legible ul,
+.legible ol,
+.legible blockquote,
+.legible table,
+.legible pre code:first-child {
+  margin-top: 2em;
+}
+
+.legible *:first-child {
+  margin-top: 0;
+}
+
+.legible h1 + *,
+.legible h2 + *,
+.legible h3 + *,
+.legible h4 + *,
+.legible h5 + *,
+.legible h6 + * {
+  margin-top: .3em;
+}
+
+/* Headers */
+.header-1,
+.legible .header-1,
+.legible h1 {
+  font-size: 3.375em;
+  line-height: 1.2em;
+  font-weight: 700;
+}
+
+.header-2,
+.legible .header-2,
+.legible h2 {
+  font-size: 2.25em;
+  line-height: 1.2em;
+  font-weight: 700;
+}
+
+.header-3,
+.legible .header-3,
+.legible h3 {
+  font-size: 1.5em;
+  line-height: 1.2em;
+  font-weight: 700;
+}
+
+.header-4,
+.legible .header-4,
+.legible h4 {
+  font-weight: 700;
+}
+
+.header-5,
+.legible .header-5,
+.legible h5 {
+  font-weight: 700;
+  font-style: italic;
+}
+
+.header-6,
+.legible .header-6,
+.legible h6 {
+  font-style: italic;
+}
+
+/* Lists */
+.legible ul,
+.legible ol {
+  list-style-position: outside;
+  margin-left: 1.5em;
+  padding-left: 0;
+}
+
+.legible ul {
+  list-style-type: disc;
+}
+
+.legible ol {
+  list-style-type: decimal;
+}
+
+/* Quotes/bolds/italics and other emphasis */
+.legible b,
+.legible strong {
+  font-weight: 700;
+}
+
+.legible i,
+.legible em {
+  font-style: italic;
+}
+
+.legible code {
+  vertical-align: bottom;
+  font-family: 'Monaco', Courier, 'Courier New', monospace;
+  background-color: #efefef;
+}
+
+.legible pre code {
+  display: block;
+}
+
+.legible blockquote {
+  font-size: 1.5em;
+  line-height: 1.2083333333333333em;
+  font-weight: 700;
+  font-style: italic;
+}

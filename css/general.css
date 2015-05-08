@@ -160,17 +160,7 @@ html.showing-css .legible-css {
   display: block;
 }
 
-html.showing-grid .legible-test {
-  background-image: linear-gradient(
-    to bottom,
-    transparent,
-    transparent 50%,
-    #f1f1f5 50%,
-    #f1f1f5
-  );
-}
-
-html.showing-grid .legible-test .wrapper > * {
+html.display-helpers .legible-test .wrapper > * {
   background-color: rgba(0, 0, 0, .1);
   outline: rgba(0, 0, 0, .5) 1px solid;
 }
