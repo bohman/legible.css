@@ -207,7 +207,7 @@
       });
 
       leg.ref.css.legible_array.push({
-        selectors: ['.legible h1', '.legible h2', '.legible h3', '.legible h4', '.legible h5', '.legible h6', '.legible div', '.legible p', '.legible ul', '.legible ol', '.legible blockquote', '.legible table', '.legible pre code:first-child'],
+        selectors: ['.legible h1', '.legible h2', '.legible h3', '.legible h4', '.legible h5', '.legible h6', '.legible div', '.legible p', '.legible ul', '.legible ol', '.legible blockquote', '.legible table', '.legible .form', '.legible pre code:first-child'],
         styles: {
           margin_top: block_spacing_em + 'em'
         }
@@ -224,6 +224,13 @@
         selectors: ['.legible h1 + *', '.legible h2 + *', '.legible h3 + *', '.legible h4 + *', '.legible h5 + *', '.legible h6 + *'],
         styles: {
           margin_top: h_space_after + 'em'
+        }
+      });
+
+      leg.ref.css.legible_array.push({
+        selectors: ['.legible form'],
+        styles: {
+          display: 'block'
         }
       });
 
