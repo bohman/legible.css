@@ -142,16 +142,19 @@
 
       var h1_size_multiplier = parseFloat($('#h1-size-multiplier').val());
       var h1_font_size_px = Math.round(Math.pow(h_scale, h1_size_multiplier) * font_size_px);
+      var h1_font_size_em = h1_font_size_px / font_size_px;
       var h1_line_height_em = parseFloat($('#h1-line-height-range').val());
       var h1_font_weight = parseFloat($('#h1-font-weight').val());
 
       var h2_size_multiplier = parseFloat($('#h2-size-multiplier').val());
       var h2_font_size_px = Math.round(Math.pow(h_scale, h2_size_multiplier) * font_size_px);
+      var h2_font_size_em = h2_font_size_px / font_size_px;
       var h2_line_height_em = parseFloat($('#h2-line-height-range').val());
       var h2_font_weight = parseFloat($('#h2-font-weight').val());
 
       var h3_size_multiplier = parseFloat($('#h3-size-multiplier').val());
       var h3_font_size_px = Math.round(Math.pow(h_scale, h3_size_multiplier) * font_size_px);
+      var h3_font_size_em = h3_font_size_px / font_size_px;
       var h3_line_height_em = parseFloat($('#h3-line-height-range').val());
       var h3_font_weight = parseFloat($('#h3-font-weight').val());
 
@@ -165,6 +168,7 @@
 
       var blockquote_size_multiplier = parseFloat($('#blockquote-size').val());
       var blockquote_font_size_px = Math.round(Math.pow(h_scale, blockquote_size_multiplier) * font_size_px);
+      var blockquote_font_size_em = blockquote_font_size_px / font_size_px;
       var blockquote_line_height_em = parseFloat($('#blockquote-line-height-range').val());
       var blockquote_font_weight = parseFloat($('#blockquote-font-weight').val());
       var blockquote_font_style = $('#blockquote-font-style').val();
@@ -179,6 +183,9 @@
 
       // Support - visualize some numbers to make it easier to set stuff
       $('.line-height-px').text(line_height_px);
+      $('.h1-font-size-px').text(h1_font_size_px);
+      $('.h2-font-size-px').text(h2_font_size_px);
+      $('.h3-font-size-px').text(h3_font_size_px);
 
       // Support css, helps seeing things but shouldn't be added to legible
       //leg.ref.css.support_array.push({
@@ -239,7 +246,7 @@
         comment: 'Headers',
         selectors: ['.header-1', '.legible .header-1', '.legible h1'],
         styles: {
-          font_size: h1_font_size_px + 'px',
+          font_size: h1_font_size_em + 'em',
           line_height: h1_line_height_em + 'em',
           font_weight: h1_font_weight
         }
@@ -248,7 +255,7 @@
       leg.ref.css.legible_array.push({
         selectors: ['.header-2', '.legible .header-2', '.legible h2'],
         styles: {
-          font_size: h2_font_size_px + 'px',
+          font_size: h2_font_size_em + 'em',
           line_height: h2_line_height_em + 'em',
           font_weight: h2_font_weight
         }
@@ -257,7 +264,7 @@
       leg.ref.css.legible_array.push({
         selectors: ['.header-3', '.legible .header-3', '.legible h3'],
         styles: {
-          font_size: h3_font_size_px + 'px',
+          font_size: h3_font_size_em + 'em',
           line_height: h3_line_height_em + 'em',
           font_weight: h3_font_weight
         }
