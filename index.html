@@ -39,18 +39,11 @@
 
 
   <div class="legible-test">
-    <div class="wrapper legible">
+    <div class="wrapper legible" contenteditable="false">
       <h1>legible.css</h1>
-      <p>This is it. Blah blah blah. Made by <a href="http://linusbohman.se">Linus Bohman</a> for <a href="http://040.se">040</a>. If you need a beautiful and well crafted website or webapp, give us a call. We're based in gorgeous Malmö, Sweden, but work globally.</p>
+      <p>Made by <a href="http://linusbohman.se">Linus Bohman</a> for <a href="http://040.se">040</a>. If you need a beautiful and well crafted website or webapp, give us a call. We're based in gorgeous Malmö, Sweden, but work globally.</p>
 
       <p>This app came to be after realizing we'd like a quick way to play with and test different elements on a page. It is the result of many hours of experimenting and research. Have fun. Write more about philosophy.</p>
-
-      <h2>How to use</h2>
-      <p>Click CSS-button. Copy/paste. Add .legible to parent element. Done! We do make a few assumptions, though:</p>
-
-      <ul>
-        <li>Reset and improvements (link to github, probably works anyway but is untested)</li>
-      </ul>
 
       <h2>An in-depth look at what we're doing</h2>
 
@@ -78,17 +71,6 @@
       </ul>
 
       <p>Similar calculations are used when we determine indents and padding, but other than that we're free to go bananas with other styling. These calculations hold true for all (well crafted) fonts. Neat, right?</p>
-
-      <h2>Todo</h2>
-      <ul>
-        <li>Evaluate options (fonts?) - it all depends on how/if we want to use it</li>
-        <li>Write better test text</li>
-        <li>Make test text editable</li>
-        <li>Make it all pretty</li>
-        <li>If possible, set font-size on .legible (or body) in px and other sizes in em for easy scaling</li>
-        <li>Separate screen for user entered CSS that isn't killed when we rebuild CSS</li>
-        <li>Better saving of settings (hash right now, but we probably want something else)</li>
-      </ul>
 
       <h2>Old test case - here for legacy but will be replaced soon enough</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <strong>Nullam gravida venenatis consequat</strong>. <em>In hac habitasse platea dictumst</em>. <span style="text-decoration: line-through;">Etiam pharetra, purus quis malesuada blandit,</span> <a href="http://040.se">ligula nisi ornare nibh</a>, <span style="text-decoration: underline;">condimentum fermentum</span> quam metus vitae quam. <code><b class="hello">inline code test</b></code> Nulla ultrices, tortor sit amet scelerisque lobortis, neque arcu ornare sapien, et pellentesque tortor enim quis libero. Maecenas dapibus faucibus arcu, eu fringilla libero rutrum quis. Donec feugiat, arcu id commodo ornare, justo odio hendrerit libero, id venenatis nibh quam eget est. Aliquam in molestie metus. Integer venenatis commodo euismod. In hac habitasse platea dictumst. Sed et nisl quis lorem cursus rutrum. Nunc porttitor condimentum lorem sed hendrerit. Etiam semper quam vel sapien porta imperdiet a vitae nisi. In ut suscipit magna. Mauris eget felis dolor, non sodales magna.</p>
@@ -130,224 +112,242 @@
   </div>
 
 
-  <form class="controls">
+  <form class="control-wrapper">
+
     <!--
       States to have in finished version:
       - Demo
       - Show CSS
       - Show HTML
     -->
-    <div class="section">
-      <button class="toggle-css">Toggle css</button>
-      <button class="toggle-grid">Toggle helpers</button>
-    </div>
 
-    <div class="section">
-      <h2 class="section-title">Sizes and spacing</h2>
-
-      <div class="field-group">
-        <label>Font size (px) <input id="font-size-input" type="number" min="8" max="54" step="1"></label>
-        <input id="font-size-range" type="range" value="16" min="8" max="54" step="1">
+    <div class="controls">
+      <div class="section state-switcher">
+        <button type="button" class="toggle-css">Grab CSS</button>
+        <button type="button" class="toggle-grid">Outlines</button>
+        <button type="button" class="toggle-html">HTML</button>
       </div>
 
-      <div class="field-group">
-        <label>Line height (em) <input type="number" id="line-height-input" min="1" max="3" step="0.05"> (<span class="line-height-px"></span>px)</label>
-        <input id="line-height-range" type="range" value="1.8" min="1" max="3" step="0.05">
-      </div>
-
-      <div class="field-group">
-        <label>Spacing (em) <input type="number" id="block-spacing-input" min="1" max="4" step="1"></label>
-        <input id="block-spacing-range" type="range" value="1.5" min="1" max="4" step="0.1">
+      <div class="section sub-control-switcher">
+        <a href="#general" data-subcontrol="general">General</a>
+        <a href="#header" data-subcontrol="header">Headers</a>
+        <a href="#list" data-subcontrol="list">Lists</a>
+        <a href="#blockquote" data-subcontrol="blockquote">Blockquotes</a>
+        <a href="#highlight" data-subcontrol="highlight">Highlights</a>
       </div>
     </div>
 
-    <!-- <div class="field-group">
-      font-family
-    </div> -->
+    <div class="sub-controls general">
+      <div class="section">
+        <h2 class="section-title">Sizes and spacing</h2>
 
-    <div class="section">
-      <h2 class="section-title">Headers</h2>
+        <div class="field-group">
+          <label>Font size (px) <input id="font-size-input" type="number" min="8" max="54" step="1"></label>
+          <input id="font-size-range" type="range" value="16" min="8" max="54" step="1">
+        </div>
 
-      <div class="field-group">
-        <label>Header scale <input type="number" id="h-scale-input" min="1" max="4" step="0.05"></label>
-        <input id="h-scale-range" type="range" value="1.5" min="1" max="4" step="0.05">
-      </div>
+        <div class="field-group">
+          <label>Line height (em) <input type="number" id="line-height-input" min="1" max="3" step="0.05"> (<span class="line-height-px"></span>px)</label>
+          <input id="line-height-range" type="range" value="1.8" min="1" max="3" step="0.05">
+        </div>
 
-      <div class="field-group">
-        <label>Space after (em) <input type="number" id="h-space-after-input" min="0" max="2" step="0.05"></label>
-        <input id="h-space-after-range" type="range" value=".3" min="0" max="2" step="0.05">
-      </div>
-
-      <!-- <div class="field-group">
-        font-family
-      </div> -->
-
-      <h3 class="section-sub-title">Header 1</h3>
-      <div class="field-group">
-        <label>Font size multiplier (<span class="h1-font-size-px"></span>px)</label>
-        <input type="number" id="h1-size-multiplier" value="3">
-      </div>
-
-      <div class="field-group">
-        <label>Line height (em) <input type="number" id="h1-line-height-input" min="0" max="3" step="0.1"></label>
-        <input id="h1-line-height-range" type="range" value="1.3" min="0" max="3" step="0.1">
-      </div>
-
-      <div class="field-group">
-        <label>Font weight</label>
-        <input type="number" id="h1-font-weight" value="700" min="100" max="900" step="100">
-      </div>
-
-      <h3 class="section-sub-title">Header 2</h3>
-      <div class="field-group">
-        <label>Font size multiplier (<span class="h2-font-size-px"></span>px)</label>
-        <input type="number" id="h2-size-multiplier" value="2">
-      </div>
-
-      <div class="field-group">
-        <label>Line height (em) <input type="number" id="h2-line-height-input" min="0" max="3" step="0.1"></label>
-        <input id="h2-line-height-range" type="range" value="1.3" min="0" max="3" step="0.1">
-      </div>
-
-      <div class="field-group">
-        <label>Font weight</label>
-        <input type="number" id="h2-font-weight" value="700" min="100" max="900" step="100">
-      </div>
-
-      <h3 class="section-sub-title">Header 3</h3>
-      <div class="field-group">
-        <label>Font size multiplier (<span class="h3-font-size-px"></span>px)</label>
-        <input type="number" id="h3-size-multiplier" value="1">
-      </div>
-
-      <div class="field-group">
-        <label>Line height (em) <input type="number" id="h3-line-height-input" min="0" max="3" step="0.1"></label>
-        <input id="h3-line-height-range" type="range" value="1.3" min="0" max="3" step="0.1">
-      </div>
-
-      <div class="field-group">
-        <label>Font weight</label>
-        <input type="number" id="h3-font-weight" value="700" min="100" max="900" step="100">
-      </div>
-
-      <h3 class="section-sub-title">Header 4 - Header 6</h3>
-      <div class="field-group">
-        <label>Header 4 font weight</label>
-        <input type="number" id="h4-font-weight" value="700" min="100" max="900" step="100">
-      </div>
-
-    </div>
-
-    <div class="section">
-      <h2 class="section-title">Lists</h2>
-
-      <div class="field-group">
-        <label>Bullet position</label>
-        <select id="list-style-position">
-          <option value="outside" selected="selected">Outside</option>
-          <option value="inside">Inside</option>
-        </select>
-      </div>
-
-      <div class="field-group">
-        <label>Indentation <input type="number" id="list-margin-left-input" value="1.5" min="0" max="5" step="0.05"></label>
-        <input id="list-margin-left-range" type="range" value="1.5" min="0" max="5" step="0.05">
-      </div>
-
-      <div class="field-group">
-        <label>UL bullet type</label>
-        <select id="list-ul-bullet-type">
-          <option value="disc" selected="selected">Disc</option>
-          <option value="circle">Circle</option>
-          <option value="square">Square</option>
-        </select>
-      </div>
-
-      <div class="field-group">
-        <label>OL bullet type</label>
-        <select id="list-ol-bullet-type">
-          <option value="decimal" selected="selected">Decimal</option>
-          <option value="decimal-leading-zero">Decimal with leading zero</option>
-          <option value="lower-roman">Lower roman</option>
-          <option value="upper-roman">Upper roman</option>
-          <option value="lower-greek">Lower greek</option>
-          <option value="lower-latin">Lower latin</option>
-          <option value="upper-latin">Upper latin</option>
-          <option value="armenian">Armenian</option>
-          <option value="georgian">Georgian</option>
-          <option value="lower-alpha">Lower alpha</option>
-          <option value="upper-alpha">Upper alpha</option>
-        </select>
+        <div class="field-group">
+          <label>Spacing (em) <input type="number" id="block-spacing-input" min="1" max="4" step="1"></label>
+          <input id="block-spacing-range" type="range" value="1.5" min="1" max="4" step="0.1">
+        </div>
       </div>
     </div>
 
+    <div class="sub-controls header">
+      <div class="section">
+        <h3 class="section-title">General</h3>
+        <div class="field-group">
+          <label>Header scale <input type="number" id="h-scale-input" min="1" max="4" step="0.05"></label>
+          <input id="h-scale-range" type="range" value="1.5" min="1" max="4" step="0.05">
+        </div>
 
-    <div class="section">
-      <h2 class="section-title">Blockquotes</h2>
-
-      <div class="field-group">
-        <label>Font size multiplier</label>
-        <input type="number" id="blockquote-size" value="1">
+        <div class="field-group">
+          <label>Space after (em) <input type="number" id="h-space-after-input" min="0" max="2" step="0.05"></label>
+          <input id="h-space-after-range" type="range" value=".3" min="0" max="2" step="0.05">
+        </div>
       </div>
 
-      <div class="field-group">
-        <label>Line height (em) <input type="number" id="blockquote-line-height-input" min="0" max="3" step="0.1"></label>
-        <input id="blockquote-line-height-range" type="range" value="1.3" min="0" max="3" step="0.1">
+      <div class="section">
+        <h3 class="section-title">Header 1</h3>
+        <div class="field-group">
+          <label>Font size multiplier (<span class="h1-font-size-px"></span>px)</label>
+          <input type="number" id="h1-size-multiplier" value="3">
+        </div>
+
+        <div class="field-group">
+          <label>Line height (em) <input type="number" id="h1-line-height-input" min="0" max="3" step="0.1"></label>
+          <input id="h1-line-height-range" type="range" value="1.3" min="0" max="3" step="0.1">
+        </div>
+
+        <div class="field-group">
+          <label>Font weight</label>
+          <input type="number" id="h1-font-weight" value="700" min="100" max="900" step="100">
+        </div>
       </div>
 
-      <div class="field-group">
-        <label>Font weight</label>
-        <input type="number" id="blockquote-font-weight" value="700" min="100" max="900" step="100">
+      <div class="section">
+        <h3 class="section-title">Header 2</h3>
+        <div class="field-group">
+          <label>Font size multiplier (<span class="h2-font-size-px"></span>px)</label>
+          <input type="number" id="h2-size-multiplier" value="2">
+        </div>
+
+        <div class="field-group">
+          <label>Line height (em) <input type="number" id="h2-line-height-input" min="0" max="3" step="0.1"></label>
+          <input id="h2-line-height-range" type="range" value="1.3" min="0" max="3" step="0.1">
+        </div>
+
+        <div class="field-group">
+          <label>Font weight</label>
+          <input type="number" id="h2-font-weight" value="700" min="100" max="900" step="100">
+        </div>
       </div>
 
-      <div class="field-group">
-        <label>Font style</label>
-        <select id="blockquote-font-style">
-          <option value="normal">Normal</option>
-          <option value="italic" selected="selected">Italic</option>
-        </select>
+      <div class="section">
+        <h3 class="section-title">Header 3</h3>
+        <div class="field-group">
+          <label>Font size multiplier (<span class="h3-font-size-px"></span>px)</label>
+          <input type="number" id="h3-size-multiplier" value="1">
+        </div>
+
+        <div class="field-group">
+          <label>Line height (em) <input type="number" id="h3-line-height-input" min="0" max="3" step="0.1"></label>
+          <input id="h3-line-height-range" type="range" value="1.3" min="0" max="3" step="0.1">
+        </div>
+
+        <div class="field-group">
+          <label>Font weight</label>
+          <input type="number" id="h3-font-weight" value="700" min="100" max="900" step="100">
+        </div>
       </div>
 
-      <div class="field-group">
-        <label>Background color</label>
-        <input type="text" id="blockquote-background-color" value="transparent">
+      <div class="section">
+        <h3 class="section-title">Header 4 - Header 6</h3>
+        <div class="field-group">
+          <label>Header 4 font weight</label>
+          <input type="number" id="h4-font-weight" value="700" min="100" max="900" step="100">
+        </div>
       </div>
-
-      <div class="field-group">
-        <label>Text color</label>
-        <input type="text" id="blockquote-color" value="inherit">
-      </div>
-
-      <div class="field-group">
-        <label>Indentation <input type="number" id="blockquote-margin-left-input" value="1.5" min="0" max="5" step="0.05"></label>
-        <input id="blockquote-margin-left-range" type="range" value="1.5" min="0" max="5" step="0.05">
-      </div>
-
-      <div class="field-group">
-        <label>Padding <input type="number" id="blockquote-padding-input" min="1" max="4" step="0.5"></label>
-        <input id="blockquote-padding-range" type="range" value="0" min="0" max="4" step="0.5">
-      </div>
-
     </div>
 
-    <div class="section">
-      <h2 class="section-title">Other</h2>
+    <div class="sub-controls list">
+      <div class="section">
+        <h2 class="section-title">Lists</h2>
 
-      <div class="field-group">
-        <label>Bold weight</label>
-        <input type="number" id="b-font-weight" value="700" min="100" max="900" step="100">
+        <div class="field-group">
+          <label>Bullet position</label>
+          <select id="list-style-position">
+            <option value="outside" selected="selected">Outside</option>
+            <option value="inside">Inside</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label>Indentation <input type="number" id="list-margin-left-input" value="1.5" min="0" max="5" step="0.05"></label>
+          <input id="list-margin-left-range" type="range" value="1.5" min="0" max="5" step="0.05">
+        </div>
+
+        <div class="field-group">
+          <label>UL bullet type</label>
+          <select id="list-ul-bullet-type">
+            <option value="disc" selected="selected">Disc</option>
+            <option value="circle">Circle</option>
+            <option value="square">Square</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label>OL bullet type</label>
+          <select id="list-ol-bullet-type">
+            <option value="decimal" selected="selected">Decimal</option>
+            <option value="decimal-leading-zero">Decimal with leading zero</option>
+            <option value="lower-roman">Lower roman</option>
+            <option value="upper-roman">Upper roman</option>
+            <option value="lower-greek">Lower greek</option>
+            <option value="lower-latin">Lower latin</option>
+            <option value="upper-latin">Upper latin</option>
+            <option value="armenian">Armenian</option>
+            <option value="georgian">Georgian</option>
+            <option value="lower-alpha">Lower alpha</option>
+            <option value="upper-alpha">Upper alpha</option>
+          </select>
+        </div>
       </div>
+    </div>
 
-      <div class="field-group">
-        <label>Code background color</label>
-        <input type="text" id="code-background-color" value="#222">
+    <div class="sub-controls blockquote">
+      <div class="section">
+        <h2 class="section-title">Blockquotes</h2>
+
+        <div class="field-group">
+          <label>Font size multiplier</label>
+          <input type="number" id="blockquote-size" value="1">
+        </div>
+
+        <div class="field-group">
+          <label>Line height (em) <input type="number" id="blockquote-line-height-input" min="0" max="3" step="0.1"></label>
+          <input id="blockquote-line-height-range" type="range" value="1.3" min="0" max="3" step="0.1">
+        </div>
+
+        <div class="field-group">
+          <label>Font weight</label>
+          <input type="number" id="blockquote-font-weight" value="700" min="100" max="900" step="100">
+        </div>
+
+        <div class="field-group">
+          <label>Font style</label>
+          <select id="blockquote-font-style">
+            <option value="normal">Normal</option>
+            <option value="italic" selected="selected">Italic</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label>Background color</label>
+          <input type="text" id="blockquote-background-color" value="transparent">
+        </div>
+
+        <div class="field-group">
+          <label>Text color</label>
+          <input type="text" id="blockquote-color" value="inherit">
+        </div>
+
+        <div class="field-group">
+          <label>Indentation <input type="number" id="blockquote-margin-left-input" value="1.5" min="0" max="5" step="0.05"></label>
+          <input id="blockquote-margin-left-range" type="range" value="1.5" min="0" max="5" step="0.05">
+        </div>
+
+        <div class="field-group">
+          <label>Padding <input type="number" id="blockquote-padding-input" min="1" max="4" step="0.5"></label>
+          <input id="blockquote-padding-range" type="range" value="0" min="0" max="4" step="0.5">
+        </div>
       </div>
+    </div>
 
-      <div class="field-group">
-        <label>Code text color</label>
-        <input type="text" id="code-color" value="#fff">
+    <div class="sub-controls highlight">
+      <div class="section">
+        <h2 class="section-title">Highlights</h2>
+
+        <div class="field-group">
+          <label>Bold weight</label>
+          <input type="number" id="b-font-weight" value="700" min="100" max="900" step="100">
+        </div>
+
+        <div class="field-group">
+          <label>Code background color</label>
+          <input type="text" id="code-background-color" value="#222">
+        </div>
+
+        <div class="field-group">
+          <label>Code text color</label>
+          <input type="text" id="code-color" value="#fff">
+        </div>
       </div>
-
     </div>
 
   </form>

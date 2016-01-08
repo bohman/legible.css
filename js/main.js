@@ -30,7 +30,7 @@
       // Elements
       leg.ref.el.legible_css = $('.legible-css');
       leg.ref.el.support_css = $('.support-css');
-      leg.ref.el.controls = $('.controls');
+      leg.ref.el.controls = $('.control-wrapper');
     },
 
     // Build CSS at proper times
@@ -91,14 +91,31 @@
       });
     },
 
-    // Other interactions
+    // Buttons
     buttons: function() {
       $('.toggle-css').click(function(e){
         leg.fn.toggle_css();
         e.preventDefault();
+        $(this).blur();
       });
       $('.toggle-grid').click(function(e){
         leg.fn.toggle_grid();
+        e.preventDefault();
+        $(this).blur();
+      });
+      $('.toggle-html').click(function(e){
+        leg.fn.toggle_html();
+        e.preventDefault();
+        $(this).blur();
+      });
+    },
+
+    // Sub control switching
+    sub_controls: function() {
+      $('[data-subcontrol]').click(function(e){
+        var sub_control_class = '.' + $(this).data('subcontrol');
+        $(this).toggleClass('active').siblings().removeClass('active');
+        $('.sub-controls' + sub_control_class).toggleClass('active').siblings().removeClass('active');
         e.preventDefault();
       });
     }
@@ -115,9 +132,21 @@
       $('html').toggleClass('showing-css');
     },
 
-    // Toggle css
+    // Toggle grid
     toggle_grid: function() {
       $('html').toggleClass('display-helpers');
+    },
+
+    // Toggle html
+    toggle_html: function() {
+      var is_editable = $('.legible-test .wrapper').attr('contenteditable');
+      if(is_editable == 'false') {
+        $('.legible-test .wrapper').attr('contenteditable', 'true');
+        $('html').addClass('edit-html');
+      } else {
+        $('.legible-test .wrapper').attr('contenteditable', 'false');
+        $('html').removeClass('edit-html');
+      }
     },
 
     // Build CSS: grab values entered in controls,
